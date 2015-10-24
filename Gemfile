@@ -28,6 +28,8 @@ gem 'haml'
 gem 'hashie'
 gem 'httparty'
 
+gem 'bootstrap', git: 'https://github.com/twbs/bootstrap-rubygem'
+
 
 
 # Use ActiveModel has_secure_password
