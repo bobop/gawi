@@ -23,9 +23,19 @@
     %p
       Profile:
       =crew_menmber.blurb
-  
-  
+    %p 
+      = mail_to "m.ryder@volcanic.co.uk", subject: "Help my do some crime init?" do
+        %strong Contact
+  %h1 Comments
+  -@comments.each do |commy|
+    %p=commy.blurb
+    %hr
+  %h2 Add a Comment
+  =form_for  :comment, url: index_index_path(crime: params[:crime], neighbourhood: params[:neighbourhood]) do |f|
+    =f.text_area :blurb
+    =f.submit "Comment"
 
+=@crime
 :javascript
   $(document).ready(function(){
 

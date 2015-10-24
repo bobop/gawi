@@ -40,6 +40,15 @@ ActiveRecord::Schema.define(version: 20151024204838) do
 
   add_index "admin_wards", ["lsoa_code"], name: "index_admin_wards_on_lsoa_code", using: :btree
 
+  create_table "comments", force: :cascade do |t|
+    t.text     "blurb",         limit: 65535
+    t.integer  "admin_ward_id", limit: 4
+    t.string   "hood",          limit: 255
+    t.string   "crime",         limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "crews", force: :cascade do |t|
     t.string "name",  limit: 255
     t.string "skill", limit: 255
@@ -69,10 +78,10 @@ ActiveRecord::Schema.define(version: 20151024204838) do
   add_index "missions", ["crime_type"], name: "index_missions_on_crime_type", using: :btree
 
   create_table "twitter_accounts", force: :cascade do |t|
-    t.string "twitter_handle", limit: 255
-    t.string "admin_ward_id",  limit: 255
+    t.string "twitter_handle",   limit: 255
+    t.string "neighbourhood_id", limit: 255
   end
 
-  add_index "twitter_accounts", ["admin_ward_id"], name: "index_twitter_accounts_on_admin_ward_id", using: :btree
+  add_index "twitter_accounts", ["neighbourhood_id"], name: "index_twitter_accounts_on_neighbourhood_id", using: :btree
 
 end

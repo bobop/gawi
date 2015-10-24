@@ -27,7 +27,21 @@ class IndexController < ApplicationController
     
     @crew = Crew.all.sample(4)
     @local_bacon = JSON.parse(HTTParty.get("https://data.police.uk/api/greater-manchester/#{@admin_ward.neighbourhood_code}/people").body)
-
+    @comments = Comment.where(hood: params[:neighbourhood], crime: params[:crime])
+  end
+  
+  def create
+    if params[:comment].present? &&  params[:comment][:blurb].present?
+      Comment.create(
+       blurb: params[:comment][:blurb],
+       hood: params[:neighbourhood],
+       crime: params[:crime]
+      )
+      flash[:notice] = "Comment added"
+    else
+      flash[:notice] = "You are a dickhead.You did not put any text in the Comment field. You should think twice before reproducing!"
+    end
+    redirect_to info_path(crime: params[:crime], neighbourhood: params[:neighbourhood])
   end
 
 end

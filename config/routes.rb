@@ -16,7 +16,8 @@ Rails.application.routes.draw do
   end
 
   get '/:crime/:admin_ward', to: 'index#show', as: 'info'
-
+  
+  resources :index, only: :create
 
 
   

@@ -20,9 +20,9 @@ class ApiController < ApplicationController
   
   def place
     if params[:neighbourhood_name].present?
-      @places =  HTTParty.get("http://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles=#{params[:neighbourhood_name]}", verify: false)
+      @places =  HTTParty.get("http://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles=#{params[:neighbourhood_name]}&exsentences=3", verify: false)
     else
-      @places =  HTTParty.get("http://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles=manchester",verify: false)
+      @places =  HTTParty.get("http://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles=manchester&exsentences=3",verify: false)
     end
     if @places.code == 200
       @discription = @places["query"]["pages"][@places["query"]["pages"].keys.first]["extract"]
