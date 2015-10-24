@@ -4,12 +4,14 @@
   %h2 Crime, simplified
 
   = form_for :search, url: "/search", method: :get do |f|
+    %label.label Crime Type
     = f.select :category, options_for_select(@crime_categories)
     %p
       #approx-loc
-      =link_to "Select Another", "#", class: "show-me-link"
+      =link_to "Select Another Location", "#", class: "show-me-link"
       =link_to "Hide Select", "#", class: "hide-me-link hide"
     .monkey.hide
+      %label.label Location
       = f.select :admin_ward_id, options_for_select(AdminWard.all.map{ |c| [c['name'], c['id']] }), class: "select-me", prompt: "Please select"
     %br  
     = f.submit :search
