@@ -21,7 +21,7 @@ function geocodeLatLng(position) {
     url: '/api/admin_ward?lat='+position.coords.latitude+'&long='+position.coords.longitude
   }).success(function(data){
     $("#approx-loc").text(data.name);
-    $("input#search_admin_ward_id").val(data.id);
+    $("select#search_admin_ward_id").val(data.id);
   })
   // var latlng = {lat: parseFloat(position.coords.latitude), lng: parseFloat(position.coords.longitude)};
   // geocoder.geocode({'location': latlng}, function(results, status) {
