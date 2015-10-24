@@ -6,10 +6,7 @@
   = form_for :search, url: "/search", method: :get do |f|
     = f.select :category, options_for_select(@crime_categories)
     .hide
-      = f.text_field :location
-   
-    = f.hidden_field :lat
-    = f.hidden_field :long
+      = f.text_field :admin_ward_id
 
     = f.submit :search
 
