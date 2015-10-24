@@ -24,6 +24,7 @@ class IndexController < ApplicationController
     @wiki_response = nil
     @wiki_info = nil
     
+    @crew = Crew.all.sample(4)
     @local_bacon = JSON.parse(HTTParty.get("https://data.police.uk/api/greater-manchester/#{params[:neighbourhood]}/people").body)
 
   end
