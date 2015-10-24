@@ -78,10 +78,10 @@ ActiveRecord::Schema.define(version: 20151024210815) do
   add_index "missions", ["crime_type"], name: "index_missions_on_crime_type", using: :btree
 
   create_table "twitter_accounts", force: :cascade do |t|
-    t.string "twitter_handle", limit: 255
-    t.string "admin_ward_id",  limit: 255
+    t.string "twitter_handle",   limit: 255
+    t.string "neighbourhood_id", limit: 255
   end
 
-  add_index "twitter_accounts", ["admin_ward_id"], name: "index_twitter_accounts_on_admin_ward_id", using: :btree
+  add_index "twitter_accounts", ["neighbourhood_id"], name: "index_twitter_accounts_on_neighbourhood_id", using: :btree
 
 end
