@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151024201403) do
+ActiveRecord::Schema.define(version: 20151024204838) do
+
+  create_table "crews", force: :cascade do |t|
+    t.string "name",  limit: 255
+    t.string "skill", limit: 255
+    t.text   "blurb", limit: 65535
+    t.string "rate",  limit: 255
+  end
 
   create_table "missions", force: :cascade do |t|
     t.text     "crime_id",     limit: 65535

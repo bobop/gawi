@@ -1,11 +1,30 @@
 .container
   %h1 Crime: #{@crime}
   %h2 Neighbourhood: #{@neighbourhood['name']}
-  
+  %h1 Description
   #place
+  %h1 Weather
   #weather
+  %h1 Local Fuzz
   #fuzz
+  %h1 Local Fuzz Events
   #marketdays
+  %h1 Suggested Crew
+  -@crew.each do |crew_menmber|
+    %p
+      Name:
+      =crew_menmber.name
+    %p
+      Skill:
+      =crew_menmber.skill
+    %p
+      Cut:
+      ="#{crew_menmber.rate}%"
+    %p
+      Profile:
+      =crew_menmber.blurb
+  
+  
 
 
 :javascript
