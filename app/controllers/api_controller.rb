@@ -39,4 +39,8 @@ class ApiController < ApplicationController
     end
   end
 
+  def admin_ward
+    @admin_ward = AdminWard.near([params[:lat], params[:long]], 20, latitude: :lat, longitude: :lng).first
+  end
+
 end

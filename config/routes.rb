@@ -12,9 +12,10 @@ Rails.application.routes.draw do
     get "bacon", to: 'api#bacon', on: :collection
     get "place", to: 'api#place', on: :collection
     get "this_little_piggy_went_to_market", to: 'api#this_little_piggy_went_to_market', on: :collection
+    get "admin_ward", to: 'api#admin_ward', on: :collection
   end
 
-  get '/:crime/:neighbourhood', to: 'index#show', as: 'info'
+  get '/:crime/:admin_ward', to: 'index#show', as: 'info'
   
   resources :index, only: :create
 

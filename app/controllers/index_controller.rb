@@ -8,9 +8,10 @@ class IndexController < ApplicationController
   def show
     get_categories
     @crime = @crime_categories.select{ |c| c[1] == params[:crime] }.first[0]
+    @admin_ward = AdminWard.find(params[:admin_ward])
     
     # NEIGHBOURHOOD
-    @neighbourhood_response = HTTParty.get("https://data.police.uk/api/greater-manchester/#{params[:neighbourhood]}")
+    @neighbourhood_response = HTTParty.get("https://data.police.uk/api/greater-manchester/#{@admin_ward.neighbourhood_code}")
     @neighbourhood = JSON.parse(@neighbourhood_response.body)
     @neighbourhood_mash = Hashie::Mash.new @neighbourhood
 
@@ -25,7 +26,7 @@ class IndexController < ApplicationController
     @wiki_info = nil
     
     @crew = Crew.all.sample(4)
-    @local_bacon = JSON.parse(HTTParty.get("https://data.police.uk/api/greater-manchester/#{params[:neighbourhood]}/people").body)
+    @local_bacon = JSON.parse(HTTParty.get("https://data.police.uk/api/greater-manchester/#{@admin_ward.neighbourhood_code}/people").body)
     @comments = Comment.where(hood: params[:neighbourhood], crime: params[:crime])
   end
   
