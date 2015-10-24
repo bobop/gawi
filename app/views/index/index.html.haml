@@ -3,12 +3,14 @@
   %h2 Crime, simplified
 
   = form_for :search, url: "/search", method: :get do |f|
-    = f.text_field :query
+    = f.select :category, options_for_select(@crime_categories)
     .hide
       = f.text_field :location
-    = f.submit :search
-
+   
     = f.hidden_field :lat
     = f.hidden_field :long
 
+    = f.submit :search
+
   #approx-loc
+
