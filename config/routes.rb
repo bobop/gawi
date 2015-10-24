@@ -9,5 +9,9 @@ Rails.application.routes.draw do
 
   get '/:crime/:neighbourhood', to: 'index#show', as: 'info'
 
+  namespace :api do
+    get "weather", to: 'api#weather'
+  end
+
   
 end
