@@ -40,7 +40,7 @@ class IndexController < ApplicationController
     else
       flash[:notice] = "You are a dickhead.You did not put any text in the Comment field. You should think twice before reproducing!"
     end
-    redirect_to info_path(crime: params[:crime], neighbourhood: params[:neighbourhood])
+    redirect_to info_path(crime: params[:crime], neighbourhood: params[:neighbourhood], anchor: "gazeeb0")
   end
 
 end

@@ -26,6 +26,7 @@
     %p 
       = mail_to "m.ryder@volcanic.co.uk", subject: "Help my do some crime init?" do
         %strong Contact
+
   %h1 Comments
   -@comments.each do |commy|
     %p=commy.blurb
@@ -34,8 +35,9 @@
   =form_for  :comment, url: index_index_path(crime: params[:crime], neighbourhood: params[:neighbourhood]) do |f|
     =f.text_area :blurb
     =f.submit "Comment"
+#gazeeb0
 
-=@crime
+
 :javascript
   $(document).ready(function(){
 
