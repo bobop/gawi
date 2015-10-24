@@ -11,6 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20151024131140) do
+
+  create_table "missions", force: :cascade do |t|
+    t.text     "crime_id",     limit: 65535
+    t.integer  "month",        limit: 4
+    t.integer  "year",         limit: 4
+    t.string   "date_string",  limit: 255
+    t.text     "reported_by",  limit: 65535
+    t.text     "falls_within", limit: 65535
+    t.float    "longitude",    limit: 24
+    t.float    "latitude",     limit: 24
+    t.text     "location",     limit: 65535
+    t.text     "lsoa_code",    limit: 65535
+    t.text     "lsoa_name",    limit: 65535
+    t.text     "crime_type",   limit: 65535
+    t.text     "outcome_type", limit: 65535
+    t.text     "context",      limit: 65535
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
