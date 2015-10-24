@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151024210627) do
+ActiveRecord::Schema.define(version: 20151024204838) do
 
   create_table "admin_wards", force: :cascade do |t|
     t.string   "name",                  limit: 255
@@ -39,6 +39,15 @@ ActiveRecord::Schema.define(version: 20151024210627) do
   end
 
   add_index "admin_wards", ["lsoa_code"], name: "index_admin_wards_on_lsoa_code", using: :btree
+
+  create_table "comments", force: :cascade do |t|
+    t.text     "blurb",         limit: 65535
+    t.integer  "admin_ward_id", limit: 4
+    t.string   "hood",          limit: 255
+    t.string   "crime",         limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "crews", force: :cascade do |t|
     t.string "name",  limit: 255
