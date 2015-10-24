@@ -15,7 +15,8 @@ Rails.application.routes.draw do
   end
 
   get '/:crime/:neighbourhood', to: 'index#show', as: 'info'
-
+  
+  resources :index, only: :create
 
 
   
