@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   resource :api do
     get "weather", to: 'api#weather', on: :collection
+    get "bacon", to: 'api#bacon', on: :collection
   end
 
   get '/:crime/:neighbourhood', to: 'index#show', as: 'info'

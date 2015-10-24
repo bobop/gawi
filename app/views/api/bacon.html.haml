@@ -1,0 +1,12 @@
+%h1 Local FUZZ
+-@fuzz.each do |piggy|
+  %p
+    Name: 
+    =piggy['name']
+  %p
+    Rank:
+    =piggy['rank']
+  %p
+    Kill Contract: 
+    ="$#{rand(0..150)}.#{rand(0..9)}#{rand(0..9)}}"
+  %hr
