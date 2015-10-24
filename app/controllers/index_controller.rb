@@ -7,9 +7,15 @@ class IndexController < ApplicationController
 
   def show
     get_categories
-    logger.info "--- @crime_categories = #{@crime_categories.inspect}"
     @crime = @crime_categories.select{ |c| c[1] == params[:crime] }.first[0]
-    logger.info "--- @crime = #{@crime.inspect}"
+    
+    # NEIGHBOURHOOD
+    @neighbourhood_response = HTTParty.get("https://data.police.uk/api/greater-manchester/#{params[:neighbourhood]}")
+    @neighbourhood = JSON.parse(@neighbourhood_response.body)
+    
+    # WIKI INTRO
+    @wiki_response = HTTParty.get("https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles=#{@neighbourhood['name']}")
+    @wiki_info = JSON.parse(@wiki_response.body)
   end
 
 end
