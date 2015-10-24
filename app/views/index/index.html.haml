@@ -1,0 +1,6 @@
+%h1 GAWI
+%h2 Crime, simplified
+
+= form_for :search, url: "/search", method: :get do |f|
+  = f.text_field :query
+  =f.submit :search
