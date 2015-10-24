@@ -1,0 +1,43 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  lsoa_code,: MyString
+  neighbourhood_code: MyString
+  lat: MyString
+  lng: MyString
+  all-crime: 1
+  anti-social-behaviour: 1
+  bicycle-theft: MyString
+  burglary: MyString
+  criminal-damage-arson: MyString
+  drugs: MyString
+  other-theft: MyString
+  possession-of-weapons: MyString
+  public-order: MyString
+  robbery: MyString
+  shoplifting: MyString
+  theft-from-the-person: MyString
+  vehicle-crime: MyString
+  violent-crime: MyString
+  other-crime: MyString
+
+two:
+  lsoa_code,: MyString
+  neighbourhood_code: MyString
+  lat: MyString
+  lng: MyString
+  all-crime: 1
+  anti-social-behaviour: 1
+  bicycle-theft: MyString
+  burglary: MyString
+  criminal-damage-arson: MyString
+  drugs: MyString
+  other-theft: MyString
+  possession-of-weapons: MyString
+  public-order: MyString
+  robbery: MyString
+  shoplifting: MyString
+  theft-from-the-person: MyString
+  vehicle-crime: MyString
+  violent-crime: MyString
+  other-crime: MyString

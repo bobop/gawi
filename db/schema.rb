@@ -11,7 +11,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151024131140) do
+ActiveRecord::Schema.define(version: 20151024193547) do
+
+  create_table "admin_wards", force: :cascade do |t|
+    t.string   "name",                  limit: 255
+    t.string   "lsoa_code",             limit: 255
+    t.string   "neighbourhood_code",    limit: 255
+    t.float    "lat",                   limit: 24
+    t.float    "lng",                   limit: 24
+    t.integer  "all_crime",             limit: 4,   default: 0
+    t.integer  "anti_social_behaviour", limit: 4,   default: 0
+    t.integer  "bicycle_theft",         limit: 4,   default: 0
+    t.integer  "burglary",              limit: 4,   default: 0
+    t.integer  "criminal_damage_arson", limit: 4,   default: 0
+    t.integer  "drugs",                 limit: 4,   default: 0
+    t.integer  "other_theft",           limit: 4,   default: 0
+    t.integer  "possession_of_weapons", limit: 4,   default: 0
+    t.integer  "public_order",          limit: 4,   default: 0
+    t.integer  "robbery",               limit: 4,   default: 0
+    t.integer  "shoplifting",           limit: 4,   default: 0
+    t.integer  "theft_from_the_person", limit: 4,   default: 0
+    t.integer  "vehicle_crime",         limit: 4,   default: 0
+    t.integer  "violent_crime",         limit: 4,   default: 0
+    t.integer  "other_crime",           limit: 4,   default: 0
+    t.datetime "created_at",                                    null: false
+    t.datetime "updated_at",                                    null: false
+  end
+
+  add_index "admin_wards", ["lsoa_code"], name: "index_admin_wards_on_lsoa_code", using: :btree
 
   create_table "missions", force: :cascade do |t|
     t.text     "crime_id",     limit: 65535
@@ -25,11 +52,13 @@ ActiveRecord::Schema.define(version: 20151024131140) do
     t.text     "location",     limit: 65535
     t.text     "lsoa_code",    limit: 65535
     t.text     "lsoa_name",    limit: 65535
-    t.text     "crime_type",   limit: 65535
+    t.string   "crime_type",   limit: 255
     t.text     "outcome_type", limit: 65535
     t.text     "context",      limit: 65535
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "missions", ["crime_type"], name: "index_missions_on_crime_type", using: :btree
 
 end
