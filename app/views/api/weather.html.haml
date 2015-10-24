@@ -1,0 +1,5 @@
+- if @weather.present?
+  - @weather.each do |day|
+    .weather-box
+      .weather-icon{class: "#{day.weather.first.main.downcase}"}
+      .weather-text= day.weather.first.description

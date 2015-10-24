@@ -3,9 +3,10 @@ class ApiController < ApplicationController
   # /api/weather?lat=....&long=...
   def weather
     if params[:lat].present? && params[:long].present?
-      weather = WeatherService.new(params[:lat], params[:long])
+      ws = WeatherService.new(params[:lat], params[:long])
+      @weather = ws.five_day_forecast
     end
   end
 
-  
+
 end
