@@ -27,15 +27,16 @@ class IndexController < ApplicationController
     
     @crew = Crew.all.sample(4)
     @local_bacon = JSON.parse(HTTParty.get("https://data.police.uk/api/greater-manchester/#{@admin_ward.neighbourhood_code}/people").body)
-    @comments = Comment.where(crime: params[:crime], admin_ward_id: params[:admin_ward])
+    @comments = Comment.where(crime: params[:crime], admin_ward_id: @admin_ward.id)
   end
   
   def create
     if params[:comment].present? &&  params[:comment][:blurb].present?
+      admin_ward_id = AdminWard.find_by(url: params[:admin_ward]).id
       Comment.create(
        blurb: params[:comment][:blurb],
        hood: params[:neighbourhood],
-       admin_ward_id: params[:admin_ward],
+       admin_ward_id: admin_ward_id,
        crime: params[:crime]
       )
       flash[:notice] = "Comment added"
