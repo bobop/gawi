@@ -1,6 +1,31 @@
 .container
   %h1 Crime: #{@crime}
   %h2 Neighbourhood: #{@neighbourhood['name']}
-  %h3 LOCAL FUZZ
-
   
+
+  #weather
+  #fuzz
+
+
+:javascript
+  $(document).ready(function(){
+
+    //WEATHER
+    if($("#weather").length > 0){
+      $.ajax({
+        url: "#{current_host}/api/weather?lat=#{@lat}&long=#{@long}"
+      }).success(function(data){
+        $("#weather").html(data);
+      })
+    };
+
+    //FUZZ LIST
+    if($("#weather").length > 0){
+      $.ajax({
+        url: "#{current_host}/api/bacon?neighbourhood=#{@neighbourhood_mash.id}"
+      }).success(function(data){
+        $("#fuzz").html(data);
+      })
+    };
+
+  });
