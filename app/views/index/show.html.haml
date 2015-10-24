@@ -1,8 +1,49 @@
 .container
   %h1 Crime: #{@crime}
   %h2 Neighbourhood: #{@neighbourhood['name']}
+  
+  #place
+  #weather
+  #fuzz
+  #marketdays
 
-  .row
-    .col-md-12
-      %h3 ABOUT #{@neighbourhood['name']}
-      %p#wiki-info
+:javascript
+  $(document).ready(function(){
+
+    //WEATHER
+    if($("#weather").length > 0){
+      $.ajax({
+        url: "#{current_host}/api/weather?lat=#{@lat}&long=#{@long}"
+      }).success(function(data){
+        $("#weather").html(data);
+      })
+    };
+
+    //FUZZ LIST
+    if($("#fuzz").length > 0){
+      $.ajax({
+        url: "#{current_host}/api/bacon?neighbourhood=#{@neighbourhood_mash.id}"
+      }).success(function(data){
+        $("#fuzz").html(data);
+      })
+    };
+    
+    //Fuzz Events
+    if($("#marketdays").length > 0){
+      $.ajax({
+        url: "#{current_host}/api/this_little_piggy_went_to_market?neighbourhood=#{@neighbourhood_mash.id}"
+      }).success(function(data){
+        $("#marketdays").html(data);
+      })
+    };
+    
+    //Place Description
+    if($("#place").length > 0){
+      $.ajax({
+        url: "#{current_host}/api/place?neighbourhood_name=#{@neighbourhood['name'].split(" ")[0]}"
+      }).success(function(data){
+        $("#place").html(data);
+      })
+    };
+
+  });

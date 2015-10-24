@@ -1,0 +1,13 @@
+%h1 Local Fuzz
+-@fuzz.first(6).each do |piggy|
+  %p
+    Name: 
+    =piggy['name']
+  %p
+    Rank:
+    =piggy['rank']
+  -if piggy['bio'].present?
+    %p
+      Bio
+      =piggy['bio']
+  %hr

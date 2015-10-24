@@ -7,7 +7,16 @@ Rails.application.routes.draw do
 
   resources :search, only: [:index]
 
+  resource :api do
+    get "weather", to: 'api#weather', on: :collection
+    get "bacon", to: 'api#bacon', on: :collection
+    get "place", to: 'api#place', on: :collection
+    get "this_little_piggy_went_to_market", to: 'api#this_little_piggy_went_to_market', on: :collection
+  end
+
   get '/:crime/:neighbourhood', to: 'index#show', as: 'info'
+
+
 
   
 end
