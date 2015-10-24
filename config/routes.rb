@@ -7,11 +7,13 @@ Rails.application.routes.draw do
 
   resources :search, only: [:index]
 
+  resource :api do
+    get "weather", to: 'api#weather', on: :collection
+  end
+
   get '/:crime/:neighbourhood', to: 'index#show', as: 'info'
 
-  namespace :api do
-    get "weather", to: 'api#weather'
-  end
+
 
   
 end
