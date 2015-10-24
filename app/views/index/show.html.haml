@@ -3,3 +3,22 @@
   %h2 Neighbourhood: #{@neighbourhood['name']}
 
   STUFF
+
+
+
+  #weather
+
+
+:javascript
+  $(document).ready(function(){
+
+    //WEATHER
+    if($("#weather").length > 0){
+      $.ajax({
+        url: "#{current_host}/api/weather?lat=#{@lat}&long=#{@long}"
+      }).success(function(data){
+        $("#weather").html(data);
+      })
+    };
+
+  });
