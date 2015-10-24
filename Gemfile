@@ -24,6 +24,13 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'mysql2'
+gem 'haml'
+gem 'hashie'
+gem 'httparty'
+
+gem 'bootstrap', git: 'https://github.com/twbs/bootstrap-rubygem'
+
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
