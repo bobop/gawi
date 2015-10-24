@@ -5,6 +5,7 @@
 
   #weather
   #fuzz
+  #marketdays
 
 
 :javascript
@@ -20,11 +21,20 @@
     };
 
     //FUZZ LIST
-    if($("#weather").length > 0){
+    if($("#fuzz").length > 0){
       $.ajax({
         url: "#{current_host}/api/bacon?neighbourhood=#{@neighbourhood_mash.id}"
       }).success(function(data){
         $("#fuzz").html(data);
+      })
+    };
+    
+    //Fuzz Events
+    if($("#marketdays").length > 0){
+      $.ajax({
+        url: "#{current_host}/api/this_little_piggy_went_to_market?neighbourhood=#{@neighbourhood_mash.id}"
+      }).success(function(data){
+        $("#marketdays").html(data);
       })
     };
 
