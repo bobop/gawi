@@ -3,5 +3,5 @@
   %h2 Crime, simplified
 
   = form_for :search, url: "/search", method: :get do |f|
-    = f.text_field :query
-    =f.submit :search
+    = f.select :category, options_for_select(@crime_categories)
+    = f.submit :search
