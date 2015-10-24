@@ -2,7 +2,7 @@
   %h1 Crime: #{@crime}
   %h2 Neighbourhood: #{@neighbourhood['name']}
   
-
+  #place
   #weather
   #fuzz
   #marketdays
@@ -35,6 +35,15 @@
         url: "#{current_host}/api/this_little_piggy_went_to_market?neighbourhood=#{@neighbourhood_mash.id}"
       }).success(function(data){
         $("#marketdays").html(data);
+      })
+    };
+    
+    //Place Description
+    if($("#place").length > 0){
+      $.ajax({
+        url: "#{current_host}/api/place?neighbourhood_name=#{@neighbourhood['name'].split(" ")[0]}"
+      }).success(function(data){
+        $("#place").html(data);
       })
     };
 
