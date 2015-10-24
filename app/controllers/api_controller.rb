@@ -1,4 +1,6 @@
 class ApiController < ApplicationController
+  layout false
+
   # /api/weather?lat=....&long=...
   def weather
     if params[:lat].present? && params[:long].present?
