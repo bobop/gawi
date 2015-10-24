@@ -7,5 +7,7 @@ Rails.application.routes.draw do
 
   resources :search, only: [:index]
 
+  get '/:crime/:neighbourhood', to: 'index#show', as: 'info'
+
   
 end
