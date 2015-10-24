@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151024204838) do
+ActiveRecord::Schema.define(version: 20151024222639) do
 
   create_table "admin_wards", force: :cascade do |t|
     t.string   "name",                  limit: 255
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20151024204838) do
     t.integer  "other_crime",           limit: 4,   default: 0
     t.datetime "created_at",                                    null: false
     t.datetime "updated_at",                                    null: false
+    t.string   "url",                   limit: 255
   end
 
   add_index "admin_wards", ["lsoa_code"], name: "index_admin_wards_on_lsoa_code", using: :btree

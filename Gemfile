@@ -31,6 +31,7 @@ gem 'httparty'
 gem 'bootstrap', git: 'https://github.com/twbs/bootstrap-rubygem'
 
 gem 'geocoder'
+gem 'stringex'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
