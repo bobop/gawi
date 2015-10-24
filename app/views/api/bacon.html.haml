@@ -1,12 +1,13 @@
-%h1 Local FUZZ
--@fuzz.each do |piggy|
+%h1 Local Fuzz
+-@fuzz.first(6).each do |piggy|
   %p
     Name: 
     =piggy['name']
   %p
     Rank:
     =piggy['rank']
-  %p
-    Kill Contract: 
-    ="$#{rand(0..150)}.#{rand(0..9)}#{rand(0..9)}}"
+  -if piggy['bio'].present?
+    %p
+      Bio
+      =piggy['bio']
   %hr

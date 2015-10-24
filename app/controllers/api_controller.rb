@@ -2,13 +2,17 @@ class ApiController < ApplicationController
   # /api/weather?lat=....&long=...
   def weather
     if params[:lat].present? && params[:long].present?
-      weather = WeatherService.new(params[:lat], params[:long])
+      ws = WeatherService.new(params[:lat], params[:long])
+      @weather = ws.five_day_forecast
     end
   end
   
   def bacon
-    #{params[:neighbourhood]}
-    @fuzz =  JSON.parse(HTTParty.get("https://data.police.uk/api/greater-manchester/A1/people").body)
+    if params[:neighbourhood].present?
+      @fuzz =  JSON.parse(HTTParty.get("https://data.police.uk/api/greater-manchester/#{params[:neighbourhood]}/people").body)
+    else
+      @fuzz =  JSON.parse(HTTParty.get("https://data.police.uk/api/greater-manchester/A1/people").body)
+    end
   end
-  
+
 end
