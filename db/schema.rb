@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151024131140) do
+ActiveRecord::Schema.define(version: 20151024201403) do
 
   create_table "missions", force: :cascade do |t|
     t.text     "crime_id",     limit: 65535
@@ -31,5 +31,12 @@ ActiveRecord::Schema.define(version: 20151024131140) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "twitter_accounts", force: :cascade do |t|
+    t.string "twitter_handle", limit: 255
+    t.string "admin_ward_id",  limit: 255
+  end
+
+  add_index "twitter_accounts", ["admin_ward_id"], name: "index_twitter_accounts_on_admin_ward_id", using: :btree
 
 end
