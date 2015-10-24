@@ -15,6 +15,7 @@ class SearchController < ApplicationController
     @location_response = fetch_location_data(lat_to_use, long_to_use)
     @neighbourhood_response = fetch_neighbourhood_data(@location_response["force"], @location_response["neighbourhood"])
 
+    redirect_to info_path(crime: category, neighbourhood: @location_response["neighbourhood"])
     
   end
 
