@@ -1,7 +1,7 @@
-
 .container
   %h1 GAWI
-  %h2 Crime, simplified
+  
+  .spinner
 
   = form_for :search, url: "/search", method: :get do |f|
     = f.select :category, options_for_select(@crime_categories)

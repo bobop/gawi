@@ -11,17 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 20151024210627) do
-
-
-  create_table "crews", force: :cascade do |t|
-    t.string "name",  limit: 255
-    t.string "skill", limit: 255
-    t.text   "blurb", limit: 65535
-    t.string "rate",  limit: 255
-  end
-
 
   create_table "admin_wards", force: :cascade do |t|
     t.string   "name",                  limit: 255
@@ -49,6 +39,13 @@ ActiveRecord::Schema.define(version: 20151024210627) do
   end
 
   add_index "admin_wards", ["lsoa_code"], name: "index_admin_wards_on_lsoa_code", using: :btree
+
+  create_table "crews", force: :cascade do |t|
+    t.string "name",  limit: 255
+    t.string "skill", limit: 255
+    t.text   "blurb", limit: 65535
+    t.string "rate",  limit: 255
+  end
 
   create_table "missions", force: :cascade do |t|
     t.text     "crime_id",     limit: 65535
