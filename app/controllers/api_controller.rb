@@ -14,5 +14,13 @@ class ApiController < ApplicationController
       @fuzz =  JSON.parse(HTTParty.get("https://data.police.uk/api/greater-manchester/A1/people").body)
     end
   end
+  
+  def this_little_piggy_went_to_market
+    if params[:neighbourhood].present?
+      @fuzz_parties =  JSON.parse(HTTParty.get("https://data.police.uk/api/greater-manchester/#{params[:neighbourhood]}/events").body)
+    else
+      @fuzz_parties =  JSON.parse(HTTParty.get("https://data.police.uk/api//api/leicestershire/C01/events").body)
+    end
+  end
 
 end

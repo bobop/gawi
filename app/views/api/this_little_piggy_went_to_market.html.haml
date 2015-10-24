@@ -1,0 +1,18 @@
+%h1 Fuzz Events
+-@fuzz_parties.each do |market_day|
+  %p
+    Title: 
+    =market_day['title']
+  %p
+    Description: 
+    =market_day['description'].html_safe
+  %p
+    Address: 
+    =market_day['address']
+  %p
+    Type:
+    =market_day['type']
+  %p
+    Date:
+    =market_day['start_date'].to_date.strftime("%d/%b/%Y")
+  %hr
