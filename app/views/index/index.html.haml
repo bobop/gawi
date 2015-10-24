@@ -4,4 +4,11 @@
 
   = form_for :search, url: "/search", method: :get do |f|
     = f.text_field :query
-    =f.submit :search
+    .hide
+      = f.text_field :location
+    = f.submit :search
+
+    = f.hidden_field :lat
+    = f.hidden_field :long
+
+  #approx-loc
