@@ -1,18 +1,22 @@
-
--@fuzz_parties.each do |market_day|
-  %p
-    Title: 
-    =market_day['title']
-  %p
-    Description: 
-    =market_day['description'].html_safe
-  %p
-    Address: 
-    =market_day['address']
-  %p
-    Type:
-    =market_day['type']
-  %p
-    Date:
-    =market_day['start_date'].to_date.strftime("%d/%b/%Y")
-  %hr
+- if @fuzz_parties.size > 0
+  - @fuzz_parties.each_with_index do |market_day, i|
+    - unless i > 2
+      %p
+        %strong Title: 
+        = market_day['title']
+      - if market_day['description'].present?
+        %p
+          %strong Description: 
+          = market_day['description'].html_safe
+      %p
+        %strong Address: 
+        = market_day['address']
+      / %p
+      /   %strong Type:
+      /   = market_day['type']
+      %p
+        %strong Date:
+        = market_day['start_date'].to_date.strftime("%d/%b/%Y")
+      %hr
+- else
+  %p No Opportunities coming your way
