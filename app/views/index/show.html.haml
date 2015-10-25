@@ -17,12 +17,8 @@
   #sub-header.clearfix
     #gawiscore
       %span#scorelogo
-<<<<<<< HEAD
-      %p.percent= number_to_percentage(@this_percentage, precision: 2)
-=======
-      %p score
+      %p score      
       %p.percent= number_to_percentage(@this_percentage, precision: 0)
->>>>>>> e11ac967d40104b939e825dd56eff8b8f8be3e08
       #stars= stars_html(@score_band)
     %ul#stats
       %li
@@ -64,16 +60,10 @@
                 %strong Recommended crime for #{@admin_ward.name}:
                 .text-right
                   = link_to @recommended_crime[0], info_path(crime: @recommended_crime[1], admin_ward: params[:admin_ward])
-<<<<<<< HEAD
 
-  
-    
       .col-sm-6.p0.clearfix
-=======
-  
     .clearfix
       .col-sm-6.p0
->>>>>>> e11ac967d40104b939e825dd56eff8b8f8be3e08
         #weather-wrapper.tile
           %h3.tile-ttl 5 day forecast for #{@neighbourhood['name']}
           #weather
