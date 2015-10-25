@@ -12,9 +12,8 @@
     #gawiscore
       %span#scorelogo
       %p score
-      =params[:crime]
-      = number_to_percentage(@this_percentage, precision: 2)
-      = stars_html(@score_band)
+      %p= number_to_percentage(@this_percentage, precision: 2)
+      #stars= stars_html(@score_band)
     %ul#stats
       %li
         %span Crime Type
@@ -55,8 +54,11 @@
           %h3.tile-ttl
             %i.fa.fa-twitter
             Fuzz Feed
-          %span.date 25.10.15 04:43
-          %p Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet      
+          %a.twitter-timeline{ href: "https://twitter.com/#{@twitter_handle}", data: { widget: { id: "658150254349545472" }, chrome: "nofooter noborders transparent", tweet: { limit: 3 } } } Tweets by @GMPFallowfield
+          :javascript
+            !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+          / %span.date 25.10.15 04:43
+          / %p Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet      
         
         #events.tile
           %h3.tile-ttl Local Fuzz Events
