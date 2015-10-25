@@ -1,4 +1,57 @@
+#index
+  .container
+    %header
+      %a#logo
+      #approx-loc-wrapper
+        Your location is        
+        #approx-loc
 
+    #search-wrapper
+      = form_for :search, url: "/search", method: :get do |f|
+        = f.select :category, options_for_select(@crime_categories)
+        .hide
+          = f.text_field :admin_ward_id
+
+        = f.submit :search
+    
+    #inspiration
+      %h2
+        Looking for inspiration?
+      #inspiration-links
+        %ul.clearfix
+          %li
+            %a{href:"#"}
+              %h3 GRAB A FLATSCREEN
+              %p 
+                %strong Suggeston:
+                Northenden
+          %li
+            %a{href:"#"}
+              %h3 PEDDLE SOME SMACK
+              %p 
+                %strong Suggeston:
+                Collyhurst
+          %li
+            %a{href:"#"}
+              %h3 STOCK UP ON CASH
+              %p 
+                %strong Suggeston:
+                Stockport
+          %li
+            %a{href:"#"}
+              %h3 STEAL A MOTOR
+              %p 
+                %strong Suggeston:
+                Trafford
+            
+          
+    
+    
+    .loader
+      .spinner
+        .dot1
+        .dot2
+=======
 .container
   %h1 GAWI
   %h2 Crime, simplified
@@ -35,3 +88,4 @@
     $( ".hide-me-link" ).addClass("hide");
 
   });
+>>>>>>> aaf254097f490359b00009a062d7e8997935a8a0

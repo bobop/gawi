@@ -1,13 +1,200 @@
-h1{
-  color: red;
-}
+@import 'variables';
 
-.hide{
-  display: none;
-}
+#index {
+  .container {
+    max-width: 800px;
+    header {
+      #logo {
+        margin: 25px auto 40px;
+        width: 480px;
+        height: 190px;
+      	background-size: 480px 190px;    
+      }
+      #approx-loc-wrapper {
+        text-align: center;
+        font-size: 1.4em;
+        color: #2f2f2f;
+        margin: 0 0 40px;
+      
+        #approx-loc {
+          display: inline-block;
+        }
+        a {
+          font-weight: bold;
+        }
+      }
+    }
+    #search-wrapper {
+      width: 100%;
+      min-height: 120px;
+      padding: 15px;
+      display: block;
+      position: relative;
+      border-radius: 90px;
+      margin:0 auto 40px auto;
+      box-shadow: 0 0 20px rgba(100,100,100,0.8);
+      background-color: $yellow;
+    	background-image: url('search-bg.png');
+    	background-size: 290px 185px;
+      background-repeat: repeat-x;
+    
+      form {
+        border-radius: 80px;
+        background: #2f2f2f;
+        padding: 20px;
+        margin: 0;
+        position: relative;
+      
+        .hide {
+          display: none;
+        }
+        input {
+          float: left;
+        }
+        select {
+          min-height: 30px;
+          background: #fff;
+          width: 100%;
+        }
+        input[type="submit"] {
+          @extend .trans;
+          border-radius: 50%;
+          width: 60px;
+          height: 60px;
+          display: block;
+          background: #000;
+          outline: none;
+          border: none;
+        	background-image: url('search-icon.png');
+        	background-size: 30px;
+          background-repeat: no-repeat;
+          background-position: center;
+          text-indent: -9999px;
+          background-color: $yellow;
+          position: absolute;
+          right: 20px;
+          top: 20px;
+          z-index: 0;
+          
+          &:hover {
+            background-color: $yellow-hover;
+          }
+        }
+        .chosen-container {
+          position: relative;
+          z-index: 0;
+          .chosen-single {
+            height: auto;
+            border: none;
+            border-radius: 30px;
+            box-shadow: 0 0 5px rgba(100,100,100,0.5);
+            z-index: 2;
+            span {
+              font-size: 2.0em;
+              font-weight: 300;
+              padding: 18px;
+            }
+          }
+          .chosen-drop {
+            padding: 50px 20px 20px 20px;
+            margin: -30px 0 0 0;
+            z-index: 1;
+            .chosen-results {
+              overflow-y: visible!important;
+              overflow-x: visible!important;
+              max-height: inherit;
+              
+              li.result-active {
+                color: #333!important;
+                
+                &:hover, &:focus {
+                  background-color: $yellow!important;
+                  color: #333;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    #inspiration {
+      margin: 0 0 40px;
+      h2 {
+        text-align: center;
+        color: #fff;
+        font-size: 2.2em;
+        margin: 0 0 20px;
+      }
+      #inspiration-links {
+        box-shadow: 0 0 5px rgba(100,100,100,0.8);
+      
+        ul {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+        
+          li {
+            width: 50%;
+            float: left;
+            border-right: solid 1px $border-color;
+            border-bottom: solid 1px $border-color;
+            
+            a {
+            	background-size: 50px;
+              background-repeat: no-repeat;
+              background-position: 20px 50%;
+              background-color: #fff;
+            }
 
-label{
-  &.label{
-    color: black;
-  }
+            
+            
+            &:nth-of-type(2n) {
+              border-right: none;
+            }
+            &:nth-of-type(4n), &:nth-of-type(4n - 1) {
+              border-bottom: none;
+            }
+            &:nth-of-type(1) a {
+          	  background-image: url('tv-icon.png');
+              border-radius: 5px 0 0 0;              
+            }
+            &:nth-of-type(2) a {
+          	  background-image: url('smack-icon.png');
+              border-radius: 0 5px 0 0;              
+            }
+            &:nth-of-type(3) a {
+          	  background-image: url('cash-icon.png');              
+              border-radius: 0 0 0 5px;              
+            }
+            &:nth-of-type(4) a {
+          	  background-image: url('car-icon.png');              
+              border-radius: 0 0 5px 0;              
+            }
+            
+            
+            a {
+              padding: 25px 25px 25px 100px;
+              display: block;
+              min-height: 100px;
+              @extend.trans;
+              
+              &:hover {
+                background-color: #f9f9f9;
+              }
+              
+              h3 {
+                color: $light-blue;
+                font-size:2.0em;
+              }
+              p {
+                font-size: 1.3em;
+                color: #3b3b3b;
+              }
+            }
+          }
+        }
+      
+      }
+    }
+  } 
 }
