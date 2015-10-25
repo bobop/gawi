@@ -7,6 +7,9 @@
 %p
   %strong Ill advised:
   = @not_recommended.map{ |r| r[:name] }.to_sentence
+%p
+  %strong Recommended Crime:
+  = @recommended_crime
 
 .container
   %h1 Crime: #{@crime}

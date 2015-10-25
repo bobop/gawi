@@ -18,29 +18,22 @@ class IndexController < ApplicationController
     @lat = @neighbourhood_mash.centre.latitude rescue "53.472225"
     @long = @neighbourhood_mash.centre.longitude rescue "-2.2936317"
     
-    # WIKI INTRO
-    # @wiki_response = HTTParty.get("http://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles=#{@neighbourhood['name']}")
-    # @wiki_info = JSON.parse(@wiki_response.body)
-    
-    @wiki_response = nil
-    @wiki_info = nil
-    
     @crew = Crew.all.sample(4)
-    @local_bacon = JSON.parse(HTTParty.get("https://data.police.uk/api/greater-manchester/#{@admin_ward.neighbourhood_code}/people").body)
     @comments = Comment.where(crime: params[:crime], admin_ward_id: @admin_ward.id)
 
-    @this_percentage = calculate_percentage(@admin_ward)
+    @this_percentage = calculate_percentage(@admin_ward, params[:crime])
     @score_band = score_band(@this_percentage)
 
     # FIND NEARBY WARDS
     nw_array = []
     nearby_wards = AdminWard.near([@admin_ward.lat, @admin_ward.lng], 20).limit(6)
     nearby_wards.each do |nw|
-      nw_array << { name: nw.name, percentage: calculate_percentage(nw) }
+      nw_array << { name: nw.name, percentage: calculate_percentage(nw, params[:crime]) }
     end
     logger.info "--- nw_array = #{nw_array.inspect}"
     @recommended = nw_array.select{ |a| a[:percentage] < @this_percentage }
     @not_recommended = nw_array.select{ |a| a[:percentage] > @this_percentage }
+    calculate_recommended_crime
   end
   
   def create
@@ -60,8 +53,8 @@ class IndexController < ApplicationController
   end
 
   protected
-    def calculate_percentage(aw)
-      crime_slug = params[:crime].gsub("-", "_")
+    def calculate_percentage(aw, crime)
+      crime_slug = crime.gsub("-", "_")
 
       @resolved_crimes = aw[crime_slug+'_resolved']
       @all_crimes = aw[crime_slug]
@@ -71,6 +64,21 @@ class IndexController < ApplicationController
 
     def score_band(perc)
       return perc.round(-1) / 10
+    end
+
+    def calculate_recommended_crime
+      current_best = @crime
+      current_best_score = @this_percentage
+      @crime_categories.each do |crime|
+        unless crime[1] == "anti-social-behaviour"
+          temp = calculate_percentage(@admin_ward, crime[1])
+          if temp < current_best_score
+            current_best_score = temp
+            current_best = crime
+          end
+        end
+      end
+      @recommended_crime = current_best[0]
     end
 
 end
