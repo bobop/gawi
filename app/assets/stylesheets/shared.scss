@@ -69,7 +69,7 @@ a#logo {
     
     li {
       float: left;
-      margin: 0 30px 0 3;
+      margin: 0 40px 0 0;
       
       span {
         font-size: 1.5em;
@@ -109,10 +109,15 @@ a#logo {
     p {
       font-size: 2.0em;
       color: $light-blue;
-      margin: 0 0 20px;
+      margin: 0;
+    }
+    p.percent {
+      font-size: 1.4em;
+      margin: 0 0 5px;
     }
     span {
       color: $light-blue;
+      font-size: 1.8em;
     }
   }
 }
@@ -231,6 +236,7 @@ a#logo {
     background: $dark-blue;
     min-height: 500px;
     position: relative;
+    padding: 10px 0 0 0;
     
     #fuzz-ttl {
       position: absolute;
@@ -344,6 +350,7 @@ a#logo {
 }
 
 #recommended {
+  clear: both;
   ul {
     list-style: none;
     margin: 0;
@@ -354,9 +361,14 @@ a#logo {
       border-bottom: solid 1px $border-color;
       
       p {
-        font-size: 1.8em;
+        font-size: 1.6em;
         font-weight: 300;
         margin: 0;
+        
+        span {
+          color: $light-blue;
+          float: right;
+        }
       }
     }
   }
@@ -449,24 +461,48 @@ a#logo {
 
 #comments {  
   padding: 20px;
+  background: #f9f9f9;
   
   h2 {
     font-size: 3.0em;
     font-weight: 300;
     color: #666;
+    margin: 0 0 20px;
   }
   h3 {
     font-size: 1.5em;
-    font-weight: 300;
+    font-weight: 500;
+  }
+  p {
+    font-size: 1.5em;
+    margin: 10px 0;
   }
   form {
     width: 100%;
     
-    input {
-      background: #ccc;
+    input, textarea {
+      background: #efefef;
+      width: 100%;
       padding: 15px;
       font-size: 1.4em;
       color: #333;
+      border: none;
+      margin: 0 0 15px;
+      line-height: 150%;
+      @extend .trans;
+      
+      &:focus {
+        background: #dcdcdc;
+        border: none;
+        outline:none;
+      }
+    }
+    textarea {
+      height: 200px;
+    }
+    input[type="submit"] {
+      background: $dark-blue;
+      color: #fff;
     }
   }
 }
