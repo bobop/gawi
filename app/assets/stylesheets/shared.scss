@@ -41,7 +41,7 @@ a#logo {
   width: 480px;
   height: 190px;
   display: block;
-	background-image: url('logo.png');
+	background-image: asset-url('logo.png');
 	background-size: 480px 190px;
 }
 
@@ -62,7 +62,7 @@ a#logo {
     content: "";
     width: 80px;
     height: 85px;
-  	background-image: url('loader-siren.png');
+  	background-image: asset-url('loader-siren.png');
   	background-size: 80px 85px;
   	background-repeat: no-repeat;
   	background-position: center 50%;
