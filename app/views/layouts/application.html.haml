@@ -15,6 +15,7 @@
         .row
           .col-md-4.col-md-offset-4
             %p.text-center &copy; GoodLuckToYou @ HackManchester 2015
+            %p.text-center= image_tag 'https://www.gnu.org/software/octave/images/donate-bitcoin.png'
 
 / -if user_signed_in?
 /   = link_to('Logout', destroy_user_session_path, :method => :delete)
