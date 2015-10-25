@@ -48,19 +48,16 @@
             %li
               %p
                 %strong Better areas for #{@crime}:
-                %span.fa.fa-caret-up.text-success
                 .text-right
                   = @recommended.map{ |r| link_to(r[:name], info_path(crime: params[:crime], admin_ward: r[:url])) }.to_sentence.html_safe
             %li
               %p
                 %strong Worse areas for #{@crime}:
-                %span.fa.fa-times.text-danger
                 .text-right
                   = @not_recommended.map{ |r| link_to(r[:name], info_path(crime: params[:crime], admin_ward: r[:url])) }.to_sentence.html_safe
             %li
               %p
                 %strong Recommended crime for #{@admin_ward.name}:
-                %span.fa.fa-check.text-success
                 .text-right
                   = link_to @recommended_crime[0], info_path(crime: @recommended_crime[1], admin_ward: params[:admin_ward])
   
