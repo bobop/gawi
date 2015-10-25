@@ -34,8 +34,8 @@ class IndexController < ApplicationController
       nw_array << { name: nw.name, percentage: calculate_percentage(nw, params[:crime]), url: nw.url }
     end
     # logger.info "--- nw_array = #{nw_array.inspect}"
-    @recommended = nw_array.select{ |a| a[:percentage] < @this_percentage }
-    @not_recommended = nw_array.select{ |a| a[:percentage] > @this_percentage }
+    @recommended = nw_array.select{ |a| a[:percentage] > @this_percentage }
+    @not_recommended = nw_array.select{ |a| a[:percentage] < @this_percentage }
     calculate_recommended_crime
 
     # TWITTER
