@@ -1,54 +1,83 @@
-=params[:crime]
-= number_to_percentage(@this_percentage, precision: 2)
-= stars_html(@score_band)
-%p
-  %strong Recommended:
-  = @recommended.map{ |r| r[:name] }.to_sentence
-%p
-  %strong Ill advised:
-  = @not_recommended.map{ |r| r[:name] }.to_sentence
-%p
-  %strong Recommended Crime:
-  = @recommended_crime
-
 .container
-  %h1 Crime: #{@crime}
-  %h2 Neighbourhood: #{@neighbourhood['name']}
-  %h1 Description
-  #place
-  %h1 Weather
-  #weather
-  %h1 Local Fuzz
-  #fuzz
-  %h1 Local Fuzz Events
-  #marketdays
-  %h1 Suggested Crew
-  -@crew.each do |crew_menmber|
-    %p
-      Name:
-      =crew_menmber.name
-    %p
-      Skill:
-      =crew_menmber.skill
-    %p
-      Cut:
-      ="#{crew_menmber.rate}%"
-    %p
-      Profile:
-      =crew_menmber.blurb
-    %p 
-      = mail_to "m.ryder@volcanic.co.uk", subject: "Help my do some crime init?" do
-        %strong Contact
+  %header#header.clearfix
+    %a#logo{href:"/"}
+    
+    #search-wrapper
+      = form_for :search, url: "/search", method: :get do |f|
+        = f.select :category, options_for_select(@crime_categories)
 
-  %h1 Comments
-  -@comments.each do |commy|
-    %p=commy.blurb
-    %hr
-  %h2 Add a Comment
-  =form_for  :comment, url: index_index_path(crime: params[:crime], neighbourhood: params[:neighbourhood], admin_ward: params[:admin_ward]) do |f|
-    =f.text_area :blurb
-    =f.submit "Comment"
-#gazeeb0
+        = f.submit :search
+        
+  #sub-header
+    #gawiscore
+      %span#scorelogo
+      =params[:crime]
+      = number_to_percentage(@this_percentage, precision: 2)
+      = stars_html(@score_band)
+      
+
+    
+  #content
+    .row
+      .col-sm-8
+        #wiki-info
+          %figure
+            =image_tag "#{@neighbour.id}.jpg"
+            .overlay
+              #place
+              
+      .col-sm-4
+        #localfuzz
+          #fuzz-ttl
+            %h3 LOCAL FUZZ
+          #fuzz
+            
+    %p
+      %strong Recommended:
+      = @recommended.map{ |r| r[:name] }.to_sentence
+    %p
+      %strong Ill advised:
+      = @not_recommended.map{ |r| r[:name] }.to_sentence
+    %p
+      %strong Recommended Crime:
+      = @recommended_crime
+
+
+    %h1 Crime: #{@crime}
+    %h2 Neighbourhood: #{@neighbourhood['name']}
+
+    %h1 Weather
+    #weather
+    %h1 Local Fuzz
+    %h1 Local Fuzz Events
+    #marketdays
+    %h1 Suggested Crew
+    -@crew.each do |crew_menmber|
+      %p
+        Name:
+        =crew_menmber.name
+      %p
+        Skill:
+        =crew_menmber.skill
+      %p
+        Cut:
+        ="#{crew_menmber.rate}%"
+      %p
+        Profile:
+        =crew_menmber.blurb
+      %p 
+        = mail_to "m.ryder@volcanic.co.uk", subject: "Help my do some crime init?" do
+          %strong Contact
+
+    %h1 Comments
+    -@comments.each do |commy|
+      %p=commy.blurb
+      %hr
+    %h2 Add a Comment
+    =form_for  :comment, url: index_index_path(crime: params[:crime], neighbourhood: params[:neighbourhood], admin_ward: params[:admin_ward]) do |f|
+      =f.text_area :blurb
+      =f.submit "Comment"
+  #gazeeb0
 
 
 :javascript
