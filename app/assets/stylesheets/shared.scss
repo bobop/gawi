@@ -258,14 +258,18 @@ a#logo {
     position: relative;
     padding: 10px 0 0 0;
     min-width: 570px;
-    
+    #fuzz {
+      margin-top:-36px;
+      min-height: 235px;
+    }
     #fuzz-ttl {
-      position: absolute;
+      position: relative;
       background: #fff;
       padding: 15px 25px;
       top: -60px;
       left: 0px;
-      
+      margin-top: 20px;
+      border-top: #3b4f59 solid 5px;
       &:before {
         content: "";
         position: absolute;

@@ -18,7 +18,7 @@
     #gawiscore
       %span#scorelogo
       %p score
-      %p.percent= number_to_percentage(@this_percentage, precision: 2)
+      %p.percent= number_to_percentage(@this_percentage, precision: 0)
       #stars= stars_html(@score_band)
     %ul#stats
       %li
