@@ -12,7 +12,7 @@
       }
       #approx-loc-wrapper {
         text-align: center;
-        font-size: 1.4em;
+        font-size: 1.6em;
         color: #2f2f2f;
         margin: 0 0 40px;
       
@@ -38,7 +38,7 @@
     	background-size: 290px 185px;
       background-repeat: repeat-x;
     
-      form {
+      #form {
         border-radius: 80px;
         background: #2f2f2f;
         padding: 20px;
@@ -49,9 +49,7 @@
           max-width: 200px;
         }
         
-        .hide {
-          display: none;
-        }
+        
         .sex-link{
           color: #fbc014;
           font-size: 18px;
@@ -207,4 +205,8 @@
       }
     }
   } 
+}
+
+.hide {
+  display: none;
 }
