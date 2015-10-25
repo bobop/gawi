@@ -34,34 +34,35 @@
 
     
   #content
-    .col-sm-8.p0
-      #wiki-info
-        %figure
-          = image_tag "#{@neighbourhood['id']}.jpg"
-          .overlay
-            #place
-            
-    .col-sm-4.p0
-      #recommended
-        %ul
-          %li
-            %p
-              %strong Better areas for #{@crime}:
-              .text-right
-                = @recommended.map{ |r| link_to(r[:name], info_path(crime: params[:crime], admin_ward: r[:url])) }.to_sentence.html_safe
-          %li
-            %p
-              %strong Worse areas for #{@crime}:
-              .text-right
-                = @not_recommended.map{ |r| link_to(r[:name], info_path(crime: params[:crime], admin_ward: r[:url])) }.to_sentence.html_safe
-          %li
-            %p
-              %strong Recommended crime for #{@admin_ward.name}:
-              .text-right
-                = link_to @recommended_crime[0], info_path(crime: @recommended_crime[1], admin_ward: params[:admin_ward])
-        
-    .row
-      .col-sm-6
+    .clearfix
+      .col-sm-8.p0
+        #wiki-info
+          %figure
+            = image_tag "#{@neighbourhood['id']}.jpg"
+            .overlay
+              #place
+              
+      .col-sm-4.p0
+        #recommended
+          %ul
+            %li
+              %p
+                %strong Better areas for #{@crime}:
+                .text-right
+                  = @recommended.map{ |r| link_to(r[:name], info_path(crime: params[:crime], admin_ward: r[:url])) }.to_sentence.html_safe
+            %li
+              %p
+                %strong Worse areas for #{@crime}:
+                .text-right
+                  = @not_recommended.map{ |r| link_to(r[:name], info_path(crime: params[:crime], admin_ward: r[:url])) }.to_sentence.html_safe
+            %li
+              %p
+                %strong Recommended crime for #{@admin_ward.name}:
+                .text-right
+                  = link_to @recommended_crime[0], info_path(crime: @recommended_crime[1], admin_ward: params[:admin_ward])
+  
+    .clearfix
+      .col-sm-6.p0
         #weather-wrapper.tile
           %h3.tile-ttl 5 day forecast for #{@neighbourhood['name']}
           #weather
@@ -88,8 +89,7 @@
           #marketdays
           / %span.date 25.10.15 04:43
           / %p Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet          
-          
-          #marketdays
+
     #comments
       %h2 Comments
       -@comments.each do |commy|
