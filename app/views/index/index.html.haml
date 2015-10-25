@@ -2,15 +2,18 @@
   .container
     %header
       %a#logo
-      #approx-loc-wrapper
-        Your location is        
+      #approx-loc-wrapper      
         #approx-loc
 
     #search-wrapper
       = form_for :search, url: "/search", method: :get do |f|
         = f.select :category, options_for_select(@crime_categories)
-        .hide
-          = f.text_field :admin_ward_id
+        %p
+          =link_to "Select Another Location", "#", class: "sex-link show-me-link"
+          =link_to "Hide Select", "#", class: "sex-link hide-me-link hide"
+        .monkey.hide
+          %label.label Location
+          = f.select :admin_ward_id, options_for_select(AdminWard.all.map{ |c| [c['name'], c['id']] }), class: "select-me", prompt: "Please select"
 
         = f.submit :search
     
@@ -51,23 +54,22 @@
       .spinner
         .dot1
         .dot2
-=======
-.container
-  %h1 GAWI
-  %h2 Crime, simplified
-
-  = form_for :search, url: "/search", method: :get do |f|
-    %label.label Crime Type
-    = f.select :category, options_for_select(@crime_categories)
-    %p
-      #approx-loc
-      =link_to "Select Another Location", "#", class: "show-me-link"
-      =link_to "Hide Select", "#", class: "hide-me-link hide"
-    .monkey.hide
-      %label.label Location
-      = f.select :admin_ward_id, options_for_select(AdminWard.all.map{ |c| [c['name'], c['id']] }), class: "select-me", prompt: "Please select"
-    %br  
-    = f.submit :search
+/ .container
+/   %h1 GAWI
+/   %h2 Crime, simplified
+/
+/   = form_for :search, url: "/search", method: :get do |f|
+/     %label.label Crime Type
+/     = f.select :category, options_for_select(@crime_categories)
+/     %p
+/       #approx-loc
+/       =link_to "Select Another Location", "#", class: "show-me-link"
+/       =link_to "Hide Select", "#", class: "hide-me-link hide"
+/     .monkey.hide
+/       %label.label Location
+/       = f.select :admin_ward_id, options_for_select(AdminWard.all.map{ |c| [c['name'], c['id']] }), class: "select-me", prompt: "Please select"
+/     %br
+/     = f.submit :search
 
 
 
@@ -88,4 +90,3 @@
     $( ".hide-me-link" ).addClass("hide");
 
   });
->>>>>>> aaf254097f490359b00009a062d7e8997935a8a0
