@@ -17,7 +17,6 @@
   #sub-header.clearfix
     #gawiscore
       %span#scorelogo
-      %p score
       %p.percent= number_to_percentage(@this_percentage, precision: 2)
       #stars= stars_html(@score_band)
     %ul#stats
@@ -29,7 +28,7 @@
         %span Location
         %h3 
           = @admin_ward.name
-        %p within #{@neighbourhood['name']}
+          %small within #{@neighbourhood['name']}
             
 
     
