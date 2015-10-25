@@ -11,11 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20151024210815) do
-=======
 ActiveRecord::Schema.define(version: 20151025003123) do
->>>>>>> aaf254097f490359b00009a062d7e8997935a8a0
 
   create_table "admin_wards", force: :cascade do |t|
     t.string   "name",                           limit: 255
