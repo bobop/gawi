@@ -18,22 +18,28 @@ class IndexController < ApplicationController
     @lat = @neighbourhood_mash.centre.latitude rescue "53.472225"
     @long = @neighbourhood_mash.centre.longitude rescue "-2.2936317"
     
+    # CREW
     @crew = Crew.all.sample(4)
     @comments = Comment.where(crime: params[:crime], admin_ward_id: @admin_ward.id)
 
+    # SCORE
     @this_percentage = calculate_percentage(@admin_ward, params[:crime])
     @score_band = score_band(@this_percentage)
 
-    # FIND NEARBY WARDS
+    # RECOMMENDATIONS
     nw_array = []
     nearby_wards = AdminWard.near([@admin_ward.lat, @admin_ward.lng], 20).limit(6)
     nearby_wards.each do |nw|
       nw_array << { name: nw.name, percentage: calculate_percentage(nw, params[:crime]) }
     end
-    logger.info "--- nw_array = #{nw_array.inspect}"
+    # logger.info "--- nw_array = #{nw_array.inspect}"
     @recommended = nw_array.select{ |a| a[:percentage] < @this_percentage }
     @not_recommended = nw_array.select{ |a| a[:percentage] > @this_percentage }
     calculate_recommended_crime
+
+    # TWITTER
+    @twitter_handle = TwitterAccount.find_by(neighbourhood_id: @neighbourhood['id']).twitter_handle
+    logger.info "--- @twitter_handle = #{@twitter_handle.inspect}"
   end
   
   def create
