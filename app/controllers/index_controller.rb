@@ -10,7 +10,7 @@ class IndexController < ApplicationController
     @crime_data = @crime_categories.select{ |c| c[1] == params[:crime] }.first
     @crime = @crime_data[0]
     @admin_ward = AdminWard.find_by(url: params[:admin_ward])
-    
+    @arr = [1,2,3,4,5,6]
     # NEIGHBOURHOOD
     @neighbourhood_response = HTTParty.get("https://data.police.uk/api/greater-manchester/#{@admin_ward.neighbourhood_code}")
     @neighbourhood = JSON.parse(@neighbourhood_response.body)

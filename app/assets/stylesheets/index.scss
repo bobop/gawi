@@ -1,5 +1,14 @@
 @import 'variables';
+img{
+  &.avatar-crim{
+    border: gray solid 2px;
+    border-radius: 23px; 
+  }
+}
 
+.title-date{
+  font-weight: bolder;
+}
 #index {
   .container {
     max-width: 800px;
@@ -26,6 +35,7 @@
         }
       }
     }
+
     #search-wrapper {
       width: 100%;
       float: none;
