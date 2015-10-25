@@ -33,41 +33,6 @@
 
     
   #content
-    .col-sm-8.p0
-      #wiki-info
-        %figure
-          =image_tag "#{@neighbourhood['id']}"
-          .overlay
-            #place
-            
-    .col-sm-4.p0
-      #localfuzz
-        #fuzz-ttl
-          %h3 LOCAL FUZZ
-        #fuzz
-    
-    #recommended
-      %ul
-        %li
-          %p
-            %strong Recommended for #{@crime}:
-            %span
-              = @recommended.map{ |r| r[:name] }.to_sentence
-        %li
-          %p
-            %strong Recommended crime for #{@neighbourhood['name']}:
-            %span
-              = @recommended_crime
-        %li
-          %p
-            %strong Ill advised:
-            %span
-              = @not_recommended.map{ |r| r[:name] }.to_sentence
-              
-    
-    
-    .row
-      .col-sm-6
     .clearfix
       .col-sm-8.p0
         #wiki-info
@@ -94,8 +59,13 @@
                 %strong Recommended crime for #{@admin_ward.name}:
                 .text-right
                   = link_to @recommended_crime[0], info_path(crime: @recommended_crime[1], admin_ward: params[:admin_ward])
+<<<<<<< HEAD
           
       -#.row
+=======
+  
+    .clearfix
+>>>>>>> 73743320fb4a116041d589378c0d331486df5d6f
       .col-sm-6.p0
         #weather-wrapper.tile
           %h3.tile-ttl 5 day forecast for #{@neighbourhood['name']}
@@ -123,12 +93,14 @@
           #marketdays
           / %span.date 25.10.15 04:43
           / %p Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet          
-          
-          #marketdays
+
     #comments
       %h2 Comments
       -@comments.each do |commy|
-        %p=commy.blurb
+        %p
+          =commy.blurb
+          ="-"
+          =commy.created_at.strftime("%d/%b/%Y - %H:%M")
         %hr
       %h3 Add a Comment
       =form_for  :comment, url: index_index_path(crime: params[:crime], neighbourhood: params[:neighbourhood], admin_ward: params[:admin_ward]) do |f|
