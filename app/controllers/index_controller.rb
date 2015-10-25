@@ -18,15 +18,7 @@ class IndexController < ApplicationController
     @lat = @neighbourhood_mash.centre.latitude rescue "53.472225"
     @long = @neighbourhood_mash.centre.longitude rescue "-2.2936317"
     
-    # WIKI INTRO
-    # @wiki_response = HTTParty.get("http://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles=#{@neighbourhood['name']}")
-    # @wiki_info = JSON.parse(@wiki_response.body)
-    
-    @wiki_response = nil
-    @wiki_info = nil
-    
     @crew = Crew.all.sample(4)
-    @local_bacon = JSON.parse(HTTParty.get("https://data.police.uk/api/greater-manchester/#{@admin_ward.neighbourhood_code}/people").body)
     @comments = Comment.where(crime: params[:crime], admin_ward_id: @admin_ward.id)
 
     calculate_percentage
