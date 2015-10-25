@@ -1,13 +1,27 @@
-
--@fuzz.first(6).each do |piggy|
-  %p
-    Name: 
-    =piggy['name']
-  %p
-    Rank:
-    =piggy['rank']
-  -if piggy['bio'].present?
+.col-xs-6
+  -@fuzz.first(3).each do |piggy|
     %p
-      Bio
-      =piggy['bio']
-  %hr
+      Name: 
+      =piggy['name'].gsub("Ho-", "")
+    %p
+      Rank:
+      =piggy['rank']
+    -if piggy['bio'].present?
+      %p
+        Bio
+        =piggy['bio']
+    %hr
+
+.col-xs-6
+  -@fuzz.last(3).each do |piggy|
+    %p
+      Name: 
+      =piggy['name'].gsub("Ho-", "")
+    %p
+      Rank:
+      =piggy['rank']
+    -if piggy['bio'].present?
+      %p
+        Bio
+        =piggy['bio']
+    %hr

@@ -1,4 +1,11 @@
 @import 'variables';
+h3{
+  &.coom{
+    font-size :14px;
+    font-weight: bold;
+  }
+}
+
 
 html {
   position: relative;
@@ -240,7 +247,7 @@ a#logo {
   
   #localfuzz {
     background: $dark-blue;
-    min-height: 500px;
+    min-height: 245px;
     position: relative;
     padding: 10px 0 0 0;
     
@@ -248,8 +255,8 @@ a#logo {
       position: absolute;
       background: #fff;
       padding: 15px 25px;
-      top: -50px;
-      right: -20px;
+      top: -60px;
+      left: 0px;
       
       &:before {
         content: "";
@@ -476,8 +483,8 @@ a#logo {
     margin: 0 0 20px;
   }
   h3 {
-    font-size: 1.5em;
-    font-weight: 500;
+    font-size: 1.6em;
+    font-weight: bolder;
   }
   p {
     font-size: 1.5em;
