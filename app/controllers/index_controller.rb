@@ -21,7 +21,18 @@ class IndexController < ApplicationController
     @crew = Crew.all.sample(4)
     @comments = Comment.where(crime: params[:crime], admin_ward_id: @admin_ward.id)
 
-    calculate_percentage
+    @this_percentage = calculate_percentage(@admin_ward)
+    @score_band = score_band(@this_percentage)
+
+    # FIND NEARBY WARDS
+    nw_array = []
+    nearby_wards = AdminWard.near([@admin_ward.lat, @admin_ward.lng], 20).limit(6)
+    nearby_wards.each do |nw|
+      nw_array << { name: nw.name, percentage: calculate_percentage(nw) }
+    end
+    logger.info "--- nw_array = #{nw_array.inspect}"
+    @recommended = nw_array.select{ |a| a[:percentage] < @this_percentage }
+    @not_recommended = nw_array.select{ |a| a[:percentage] > @this_percentage }
   end
   
   def create
@@ -41,14 +52,17 @@ class IndexController < ApplicationController
   end
 
   protected
-    def calculate_percentage
+    def calculate_percentage(aw)
       crime_slug = params[:crime].gsub("-", "_")
-      @max = AdminWard.maximum(crime_slug)
-      @min = AdminWard.minimum(crime_slug)
-      @current = @admin_ward.send(crime_slug)
 
-      @percentage_score = ((@current.to_f - @min.to_f)/(@max.to_f - @min.to_f)) * 100.0
-      @score_band = @percentage_score.round(-1) / 10
+      @resolved_crimes = aw[crime_slug+'_resolved']
+      @all_crimes = aw[crime_slug]
+
+      return (@resolved_crimes.to_f/@all_crimes.to_f ) * 100.0
+    end
+
+    def score_band(perc)
+      return perc.round(-1) / 10
     end
 
 end
