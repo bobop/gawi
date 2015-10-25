@@ -1,6 +1,12 @@
 =params[:crime]
-= @score_band
+= number_to_percentage(@this_percentage, precision: 2)
 = stars_html(@score_band)
+%p
+  %strong Recommended:
+  = @recommended.map{ |r| r[:name] }.to_sentence
+%p
+  %strong Ill advised:
+  = @not_recommended.map{ |r| r[:name] }.to_sentence
 
 .container
   %h1 Crime: #{@crime}
