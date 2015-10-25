@@ -319,7 +319,8 @@ a#logo {
     z-index: 0;
     figure {
       position: relative;
-      min-height: 500px;
+      min-height: 360px;
+      margin: 0;
       .overlay {
         position: absolute;
         z-index: 2;
