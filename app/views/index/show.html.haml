@@ -7,16 +7,17 @@
         = f.select :category, options_for_select(@crime_categories)
 
         = f.submit :search
-        %p
+        %p.text-center
           =link_to "Select Another Location", "#", class: "sex-link show-me-link"
           =link_to "Hide Select", "#", class: "sex-link hide-me-link hide"
-        .monkey.hide
+        .monkey.hide.text-center
           %label.label Location
           = f.select :admin_ward_id, options_for_select(AdminWard.all.order(:name).map{ |c| [c['name'], c['id']] }), class: "select-me", prompt: "Please select"
         
   #sub-header.clearfix
     #gawiscore
       %span#scorelogo
+      %p score
       %p.percent= number_to_percentage(@this_percentage, precision: 2)
       #stars= stars_html(@score_band)
     %ul#stats
@@ -28,7 +29,7 @@
         %span Location
         %h3 
           = @admin_ward.name
-          %small within #{@neighbourhood['name']}
+        %p within #{@neighbourhood['name']}
             
 
     
@@ -37,7 +38,7 @@
       .col-sm-8.p0
         #wiki-info
           %figure
-            = image_tag "#{@neighbourhood['id']}.jpg"
+            = image_tag "#{@neighbourhood['id']}.jpg", class: 'img-responsive'
             .overlay
               #place
               
@@ -49,7 +50,7 @@
                 %strong Better areas for #{@crime}:
                 .text-right
                   = @recommended.map{ |r| link_to(r[:name], info_path(crime: params[:crime], admin_ward: r[:url])) }.to_sentence.html_safe
-            %li
+            %li.cross
               %p
                 %strong Worse areas for #{@crime}:
                 .text-right
@@ -59,10 +60,16 @@
                 %strong Recommended crime for #{@admin_ward.name}:
                 .text-right
                   = link_to @recommended_crime[0], info_path(crime: @recommended_crime[1], admin_ward: params[:admin_ward])
+<<<<<<< HEAD
 
   
     
       .col-sm-6.p0.clearfix
+=======
+  
+    .clearfix
+      .col-sm-6.p0
+>>>>>>> b356f33c7e4a298352c2ec367c74d3837e0a7442
         #weather-wrapper.tile
           %h3.tile-ttl 5 day forecast for #{@neighbourhood['name']}
           #weather
@@ -164,5 +171,23 @@
         $("#place").html(data);
       })
     };
+
+  });
+
+:javascript
+  $( ".show-me-link" ).click(function() {
+    $( ".monkey" ).removeClass("hide");
+    $( ".show-me-link" ).addClass("hide");
+    $( ".hide-me-link" ).removeClass("hide");
+  });
+  $( ".hide-me-link" ).click(function() {
+    $( ".monkey" ).addClass("hide");
+    $( ".show-me-link" ).removeClass("hide");
+    $( ".hide-me-link" ).addClass("hide");
+  });
+  
+  $( "#search_admin_ward_id").change(function(){
+    $( "#approx-loc").addClass("hide");
+    $( ".hide-me-link" ).addClass("hide");
 
   });

@@ -257,6 +257,7 @@ a#logo {
     min-height: 245px;
     position: relative;
     padding: 10px 0 0 0;
+    // min-width: 570px;
     
     #fuzz-ttl {
       position: absolute;
@@ -328,8 +329,13 @@ a#logo {
     z-index: 0;
     figure {
       position: relative;
-      min-height: 360px;
+      min-height: 320px;
+      max-height: 360px;
+      overflow: hidden;
       margin: 0;
+      img {
+        margin-top: -100px;
+      }
       .overlay {
         position: absolute;
         z-index: 2;
@@ -385,7 +391,7 @@ a#logo {
     	background-repeat: no-repeat;
     	background-position: 20px 50%;
       
-      &:last-of-type {
+      &.cross {
         background-image: asset-url('status-cross.png');
         background-size: 17px;
       }         
@@ -398,10 +404,14 @@ a#logo {
         padding: 0 0 0 40px;
         
         span {
-          color: $light-blue;
+          // color: $light-blue;
           float: right;
+          font-size: 1.2em;
         }
       }
+      .text-right{
+          font-size: 1.6em;
+        }
     }
   }
 }
@@ -461,7 +471,7 @@ a#logo {
   }
 }
 #events {
-  width: 50%;
+  // width: 50%;
   float: left;
   background: #dce5ea;
   padding: 0;
