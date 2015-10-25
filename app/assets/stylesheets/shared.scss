@@ -257,6 +257,7 @@ a#logo {
     min-height: 245px;
     position: relative;
     padding: 10px 0 0 0;
+    min-width: 570px;
     
     #fuzz-ttl {
       position: absolute;
@@ -328,6 +329,7 @@ a#logo {
     z-index: 0;
     figure {
       position: relative;
+      min-height: 320px;
       max-height: 360px;
       overflow: hidden;
       margin: 0;
@@ -402,10 +404,14 @@ a#logo {
         padding: 0 0 0 40px;
         
         span {
-          color: $light-blue;
+          // color: $light-blue;
           float: right;
+          font-size: 1.2em;
         }
       }
+      .text-right{
+          font-size: 1.6em;
+        }
     }
   }
 }
