@@ -161,7 +161,7 @@ a#logo {
   form {
     border-radius: 80px;
     background: #2f2f2f;
-    padding: 20px;
+    padding: 15px;
     margin: 0;
     position: relative;
     
@@ -171,6 +171,9 @@ a#logo {
     
     .hide {
       display: none;
+    }
+    p {
+      margin: 0;
     }
     .sex-link{
       color: #fbc014;
@@ -189,21 +192,21 @@ a#logo {
     input[type="submit"] {
       @extend .trans;
       border-radius: 50%;
-      width: 60px;
-      height: 60px;
+      width: 42px;
+      height: 42px;
       display: block;
       background: #000;
       outline: none;
       border: none;
     	background-image: asset-url('search-icon.png');
-    	background-size: 30px;
+    	background-size: 20px;
       background-repeat: no-repeat;
       background-position: center;
       text-indent: -9999px;
       background-color: $yellow;
       position: absolute;
-      right: 20px;
-      top: 20px;
+      right: 15px;
+      top: 15px;
       z-index: 0;
       
       &:hover {
@@ -220,9 +223,9 @@ a#logo {
         box-shadow: 0 0 5px rgba(100,100,100,0.5);
         z-index: 2;
         span {
-          font-size: 2.0em;
+          font-size: 1.5em;
           font-weight: 300;
-          padding: 18px;
+          padding: 9px;
         }
       }
       .chosen-drop {
@@ -415,9 +418,7 @@ a#logo {
     }
   }
 }
-.row {
-  clear: both;
-  .tile {
+.tile {
     padding: 20px;
     h3.tile-ttl {
       text-transform: uppercase;
@@ -425,7 +426,6 @@ a#logo {
       color: #3c3c3c;
     }
   }  
-}
 #twitter {
   // width: 50%;
   float: left;
