@@ -10,7 +10,7 @@ class IndexController < ApplicationController
     @crime_data = @crime_categories.select{ |c| c[1] == params[:crime] }.first
     @crime = @crime_data[0]
     @admin_ward = AdminWard.find_by(url: params[:admin_ward])
-    
+    @arr = [1,2,3,4,5,6]
     # NEIGHBOURHOOD
     @neighbourhood_response = HTTParty.get("https://data.police.uk/api/greater-manchester/#{@admin_ward.neighbourhood_code}")
     @neighbourhood = JSON.parse(@neighbourhood_response.body)
@@ -34,8 +34,8 @@ class IndexController < ApplicationController
       nw_array << { name: nw.name, percentage: calculate_percentage(nw, params[:crime]), url: nw.url }
     end
     # logger.info "--- nw_array = #{nw_array.inspect}"
-    @recommended = nw_array.select{ |a| a[:percentage] < @this_percentage }
-    @not_recommended = nw_array.select{ |a| a[:percentage] > @this_percentage }
+    @recommended = nw_array.select{ |a| a[:percentage] > @this_percentage }
+    @not_recommended = nw_array.select{ |a| a[:percentage] < @this_percentage }
     calculate_recommended_crime
 
     # TWITTER

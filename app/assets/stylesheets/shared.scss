@@ -28,6 +28,12 @@ body {
   }
 }
 
+.commy-spacer{
+  margin-bottom: 20px;
+  border-bottom: solid gray 1px;
+  padding: 10px;
+}
+
 h1, h2, h3, h4, h5, h6, p {
    line-height: 150%;
 }
@@ -72,6 +78,10 @@ a#logo {
   display: block;
 	background-image: asset-url('logo.png');
 	background-size: 480px 190px;
+  @media(max-width: 661px){
+    width: 350px;
+    background-size: 350px 150px;
+  }
 }
 #sub-header {
   background: $mid-blue;

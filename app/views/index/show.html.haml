@@ -97,11 +97,16 @@
     #comments
       %h2 Comments
       -@comments.each do |commy|
-        %p
-          =commy.blurb
-          ="-"
-          =commy.created_at.strftime("%d/%b/%Y - %H:%M")
-        %hr
+        .col-xs-12.commy-spacer
+          .col-xs-12.col-sm-2
+            =image_tag "crim_#{@arr[rand(@arr.length)]}.png", width: "75", height: "75", class: "avatar-crim"
+            %p Anonymous
+          .col-xs-12.col-sm-9
+            %p.title-date
+              =commy.created_at.strftime("%d/%b/%Y - %H:%M")
+            %p
+              =commy.blurb
+              
       %h3 Add a Comment
       =form_for  :comment, url: index_index_path(crime: params[:crime], neighbourhood: params[:neighbourhood], admin_ward: params[:admin_ward]) do |f|
         =f.text_area :blurb
