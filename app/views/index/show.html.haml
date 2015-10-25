@@ -17,6 +17,7 @@
   #sub-header.clearfix
     #gawiscore
       %span#scorelogo
+      %p score
       %p.percent= number_to_percentage(@this_percentage, precision: 2)
       #stars= stars_html(@score_band)
     %ul#stats
@@ -28,7 +29,7 @@
         %span Location
         %h3 
           = @admin_ward.name
-          %small within #{@neighbourhood['name']}
+        %p within #{@neighbourhood['name']}
             
 
     
@@ -62,8 +63,8 @@
                 %span.fa.fa-check.text-success
                 .text-right
                   = link_to @recommended_crime[0], info_path(crime: @recommended_crime[1], admin_ward: params[:admin_ward])
-          
-      -# .row
+  
+    .clearfix
       .col-sm-6.p0
         #weather-wrapper.tile
           %h3.tile-ttl 5 day forecast for #{@neighbourhood['name']}
@@ -75,7 +76,7 @@
        
           
           
-      .col-sm-3#twitter
+      .col-sm-3 
         #twitter.tile
           %h3.tile-ttl
             %i.fa.fa-twitter
@@ -85,18 +86,20 @@
             !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
           / %span.date 25.10.15 04:43
           / %p Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet      
-      .col-sm-3#events
+      .col-sm-3 
         #events.tile
           %h3.tile-ttl Local Fuzz Events
           #marketdays
           / %span.date 25.10.15 04:43
           / %p Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet          
-          
-          #marketdays
+
     #comments
       %h2 Comments
       -@comments.each do |commy|
-        %p=commy.blurb
+        %p
+          =commy.blurb
+          ="-"
+          =commy.created_at.strftime("%d/%b/%Y - %H:%M")
         %hr
       %h3 Add a Comment
       =form_for  :comment, url: index_index_path(crime: params[:crime], neighbourhood: params[:neighbourhood], admin_ward: params[:admin_ward]) do |f|
