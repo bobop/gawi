@@ -29,7 +29,12 @@
         %span Location
         %h3 
           = @admin_ward.name
-          %small within #{@neighbourhood['name']}
+          
+      %li
+        %span Within
+        %h3
+          #{@neighbourhood['name']}
+          
             
   #content
     .clearfix
@@ -50,7 +55,7 @@
                   = @recommended.map{ |r| link_to(r[:name], info_path(crime: params[:crime], admin_ward: r[:url])) }.to_sentence.html_safe
             %li
               %p
-                %strong Worse areas for #{@crime}:
+                %strong Worst areas for #{@crime}:
                 .text-right
                   = @not_recommended.map{ |r| link_to(r[:name], info_path(crime: params[:crime], admin_ward: r[:url])) }.to_sentence.html_safe
             %li
