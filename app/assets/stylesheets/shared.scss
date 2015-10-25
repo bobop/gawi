@@ -257,7 +257,7 @@ a#logo {
     min-height: 245px;
     position: relative;
     padding: 10px 0 0 0;
-    min-width: 570px;
+    // min-width: 570px;
     
     #fuzz-ttl {
       position: absolute;
@@ -388,7 +388,7 @@ a#logo {
     	background-repeat: no-repeat;
     	background-position: 20px 50%;
       
-      &:last-of-type {
+      &.cross {
         background-image: asset-url('status-cross.png');
         background-size: 17px;
       }         
@@ -468,7 +468,7 @@ a#logo {
   }
 }
 #events {
-  width: 50%;
+  // width: 50%;
   float: left;
   background: #dce5ea;
   padding: 0;

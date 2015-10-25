@@ -50,7 +50,7 @@
                 %strong Better areas for #{@crime}:
                 .text-right
                   = @recommended.map{ |r| link_to(r[:name], info_path(crime: params[:crime], admin_ward: r[:url])) }.to_sentence.html_safe
-            %li
+            %li.cross
               %p
                 %strong Worse areas for #{@crime}:
                 .text-right
@@ -73,7 +73,7 @@
        
           
           
-      .col-sm-3 
+      .col-sm-3#twitter
         #twitter.tile
           %h3.tile-ttl
             %i.fa.fa-twitter
@@ -83,7 +83,7 @@
             !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
           / %span.date 25.10.15 04:43
           / %p Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet      
-      .col-sm-3 
+      .col-sm-3#events
         #events.tile
           %h3.tile-ttl Local Fuzz Events
           #marketdays
