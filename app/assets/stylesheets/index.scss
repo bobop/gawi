@@ -18,7 +18,13 @@ img{
         width: 480px;
         height: 190px;
         float: none;
-      	background-size: 480px 190px;    
+      	background-size: 480px 190px;
+        background-repeat: no-repeat;
+        @media(max-width: 661px){
+          height: 150px;
+          width: 350px;
+          background-size: 350px 150px;
+        }    
       }
       #approx-loc-wrapper {
         text-align: center;
@@ -154,6 +160,20 @@ img{
             float: left;
             border-right: solid 1px $border-color;
             border-bottom: solid 1px $border-color;
+
+            @media(max-width: 661px){
+              width: 100%;
+              border: none!important;
+              a{
+                border-radius: 0!important;
+                border: 0!important;
+                border-bottom: solid 1px $border-color !important;
+
+              }
+              &:last-of-type a{
+                border: 0!important;
+              }
+            }
             
             a {
             	background-size: 50px;
