@@ -271,13 +271,13 @@ a#logo {
         top: 0;
         bottom: 0;
         padding: 20px;
-        background: -moz-linear-gradient(top,  rgba(37,53,61,1) 0%, rgba(37,53,61,0) 99%, rgba(37,53,61,0) 100%); /* FF3.6+ */
-        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(37,53,61,1)), color-stop(99%,rgba(37,53,61,0)), color-stop(100%,rgba(37,53,61,0))); /* Chrome,Safari4+ */
-        background: -webkit-linear-gradient(top,  rgba(37,53,61,1) 0%,rgba(37,53,61,0) 99%,rgba(37,53,61,0) 100%); /* Chrome10+,Safari5.1+ */
-        background: -o-linear-gradient(top,  rgba(37,53,61,1) 0%,rgba(37,53,61,0) 99%,rgba(37,53,61,0) 100%); /* Opera 11.10+ */
-        background: -ms-linear-gradient(top,  rgba(37,53,61,1) 0%,rgba(37,53,61,0) 99%,rgba(37,53,61,0) 100%); /* IE10+ */
-        background: linear-gradient(to bottom,  rgba(37,53,61,1) 0%,rgba(37,53,61,0) 99%,rgba(37,53,61,0) 100%); /* W3C */
-        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#25353d', endColorstr='#0025353d',GradientType=0 ); /* IE6-9 */
+        background: -moz-linear-gradient(top,  rgba(37,53,61,0) 0%, rgba(37,53,61,0) 1%, rgba(37,53,61,1) 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(37,53,61,0)), color-stop(1%,rgba(37,53,61,0)), color-stop(100%,rgba(37,53,61,1))); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  rgba(37,53,61,0) 0%,rgba(37,53,61,0) 1%,rgba(37,53,61,1) 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  rgba(37,53,61,0) 0%,rgba(37,53,61,0) 1%,rgba(37,53,61,1) 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  rgba(37,53,61,0) 0%,rgba(37,53,61,0) 1%,rgba(37,53,61,1) 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  rgba(37,53,61,0) 0%,rgba(37,53,61,0) 1%,rgba(37,53,61,1) 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0025353d', endColorstr='#25353d',GradientType=0 ); /* IE6-9 */
         
         
         #place {
@@ -285,8 +285,11 @@ a#logo {
           bottom: 0;
           left: 0;
           right: 0;
-            color: #fff;
-            font-size: 2.0em;
+          padding: 20px;
+          line-height: 150%;
+          color: #fff;
+          font-size: 2.0em;
+          font-weight: 300;
         }
         
         

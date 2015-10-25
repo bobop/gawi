@@ -11,6 +11,7 @@
   #sub-header
     #gawiscore
       %span#scorelogo
+      %p score
       =params[:crime]
       = number_to_percentage(@this_percentage, precision: 2)
       = stars_html(@score_band)
@@ -22,7 +23,7 @@
       .col-sm-8
         #wiki-info
           %figure
-            =image_tag "assets/#{@neighbourhood['id']}.jpg"
+            =image_tag "#{@neighbourhood['id']}"
             .overlay
               #place
               
