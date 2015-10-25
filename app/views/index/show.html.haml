@@ -8,67 +8,98 @@
 
         = f.submit :search
         
-  #sub-header
+  #sub-header.clearfix
     #gawiscore
       %span#scorelogo
       %p score
       =params[:crime]
       = number_to_percentage(@this_percentage, precision: 2)
       = stars_html(@score_band)
-      
+    %ul#stats
+      %li
+        %span Crime Type
+        %h3 #{@crime}
+    
+      %li
+        %span Location
+        %h3 #{@neighbourhood['name']}
+            
 
     
   #content
-    .row
-      .col-sm-8
-        #wiki-info
-          %figure
-            =image_tag "#{@neighbourhood['id']}"
-            .overlay
-              #place
-              
-      .col-sm-4
-        #localfuzz
-          #fuzz-ttl
-            %h3 LOCAL FUZZ
-          #fuzz
+    .col-sm-8.p0
+      #wiki-info
+        %figure
+          =image_tag "#{@neighbourhood['id']}"
+          .overlay
+            #place
             
-    %p
-      %strong Recommended:
-      = @recommended.map{ |r| r[:name] }.to_sentence
-    %p
-      %strong Ill advised:
-      = @not_recommended.map{ |r| r[:name] }.to_sentence
-    %p
-      %strong Recommended Crime:
-      = @recommended_crime
+    .col-sm-4.p0
+      #localfuzz
+        #fuzz-ttl
+          %h3 LOCAL FUZZ
+        #fuzz
+    
+    .row
+      .col-sm-6
+        #weather-wrapper.tile
+          %h3.tile-ttl 5 day forecast for #{@neighbourhood['name']}
+          #weather
+        #weather-wrapper.tile
+          %h3.tile-ttl 5 day forecast for #{@neighbourhood['name']}
+          #weather
+          
+          
+      .col-sm-6  
+        #twitter.tile
+          %h3.tile-ttl
+            %i.fa.fa-twitter
+            Fuzz Feed
+          %span.date 25.10.15 04:43
+          %p Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet      
+        
+        #events.tile
+          %h3.tile-ttl Local Fuzz Events
+          %span.date 25.10.15 04:43
+          %p Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet          
+          
+          #marketdays
+        
+          
+      
+    #recommended
+      %ul
+        %li
+          %p
+            %strong Recommended:
+            = @recommended.map{ |r| r[:name] }.to_sentence
+        %li
+          %p
+            %strong Ill advised:
+            = @not_recommended.map{ |r| r[:name] }.to_sentence
+        %li
+          %p
+            %strong Recommended Crime:
+            = @recommended_crime
 
 
-    %h1 Crime: #{@crime}
-    %h2 Neighbourhood: #{@neighbourhood['name']}
-
-    %h1 Weather
-    #weather
-    %h1 Local Fuzz
-    %h1 Local Fuzz Events
-    #marketdays
-    %h1 Suggested Crew
-    -@crew.each do |crew_menmber|
-      %p
-        Name:
-        =crew_menmber.name
-      %p
-        Skill:
-        =crew_menmber.skill
-      %p
-        Cut:
-        ="#{crew_menmber.rate}%"
-      %p
-        Profile:
-        =crew_menmber.blurb
-      %p 
-        = mail_to "m.ryder@volcanic.co.uk", subject: "Help my do some crime init?" do
-          %strong Contact
+    / %h1 Suggested Crew
+    / -@crew.each do |crew_menmber|
+    /   %p
+    /     Name:
+    /     =crew_menmber.name
+    /   %p
+    /     Skill:
+    /     =crew_menmber.skill
+    /   %p
+    /     Cut:
+    /     ="#{crew_menmber.rate}%"
+    /   %p
+    /     Profile:
+    /     =crew_menmber.blurb
+    /   %p
+    /     = mail_to "m.ryder@volcanic.co.uk", subject: "Help my do some crime init?" do
+    /       %strong Contact
 
     %h1 Comments
     -@comments.each do |commy|

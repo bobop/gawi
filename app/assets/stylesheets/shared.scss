@@ -59,8 +59,32 @@ a#logo {
 }
 #sub-header {
   background: $mid-blue;
-  padding: 20px;
+  padding: 20px 20px 20px 230px;
   position: relative;
+  
+  ul#stats {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    
+    li {
+      float: left;
+      margin: 0 30px 0 3;
+      
+      span {
+        font-size: 1.5em;
+        color: $light-blue;
+        margin: 0 0 10px;
+        display: block;
+      }
+      h3 {
+        font-size: 3.5em;
+        color: #fff;
+        font-weight: 100;
+        margin: 0;
+      }
+    }
+  }
   
   #gawiscore {
     background: #fff;
@@ -74,12 +98,21 @@ a#logo {
     text-align: center;
     z-index: 1;
     
-    .scorelogo {
+    #scorelogo {
       width: 100px;
       height: 40px;
       display: block;
     	background-image: asset-url('logo-nostrap.png');
-    	background-size: 100px 40px;      
+    	background-size: 100px 40px; 
+      margin: 0 0 0 30px;     
+    }
+    p {
+      font-size: 2.0em;
+      color: $light-blue;
+      margin: 0 0 20px;
+    }
+    span {
+      color: $light-blue;
     }
   }
 }
@@ -193,6 +226,7 @@ a#logo {
 #content {
   background: #fff;
   
+  
   #localfuzz {
     background: $dark-blue;
     min-height: 500px;
@@ -229,10 +263,11 @@ a#logo {
     hr {
       color: $dark-blue;
       box-shadow: 0 1px 0 rgba(255,255,255,0.2);
+      margin: 5px 0 0 0;
     }
     p {
       color: #fff;
-      padding: 5px 10px 5px 80px;
+      padding: 10px 10px 5px 80px;
       font-size: 1.3em;
       margin: 0;
       
@@ -242,17 +277,22 @@ a#logo {
       
       &:nth-of-type(2n-1) {
         position: relative;
-        padding-top: 5px;
         
         &:before {
           content: "";
-          left: -20px;
-          top: 20px;
-          width: 30px;
-          height: 30px;
+          left: 15px;
+          top: 10px;
+          width: 50px;
+          position: absolute;
+          height: 50px;
           display: block;
           border-radius: 50%;
-          background: $mid-blue;
+          background-color: $mid-blue;
+        	background-image: asset-url('police-hat.png');
+        	background-size: 40px;
+        	background-repeat: no-repeat;
+        	background-position: center 50%;          
+          
         }     
       }
     }
@@ -297,12 +337,109 @@ a#logo {
       img {
         position: relative;
         z-index: 1;
+        width: 100%;
       }
     }
   }
 }
 
-
+#recommended {
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    
+    li {
+      padding: 15px 20px;
+      border-bottom: solid 1px $border-color;
+      
+      p {
+        font-size: 1.8em;
+        font-weight: 300;
+        margin: 0;
+      }
+    }
+  }
+}
+.row {
+  clear: both;
+  .tile {
+    padding: 20px;
+    h3.tile-ttl {
+      text-transform: uppercase;
+      font-weight: 500;
+      color: #3c3c3c;
+    }
+  }  
+}
+#twitter {
+  width: 50%;
+  float: left;
+  background: #1d1d1b;
+  
+  h3.tile-ttl {
+    color: #fff;
+    
+    i {
+      color: #1fa9e3;
+      margin: 0 10px 0 0;
+    }
+  }
+  .date {
+    color: #ccc;
+  }
+  p {
+    color: #fff;
+  }
+}
+#events {
+  width: 50%;
+  float: left;
+  background: #dce5ea;
+  
+}
+#twitter, #events {
+  h3.tile-ttl {
+    margin: 0 0 40px;
+  }
+  .date {
+    font-size: 1.2em;
+    font-weight: bold;
+  }      
+  
+  p {
+    font-size: 2.5em;
+    font-weight: 100;
+  }
+}
+#weather {
+  clear: both;
+  min-height: 200px;
+  .weather-box {
+    width: calc(100% / 5);
+    float: left;
+    text-align: center;
+    color: #666;
+    font-size: 1.4em;
+    font-weight: 100;
+    text-transform: uppercase;
+    line-height: 150%;
+    
+    .weather-icon {
+      width: 100%;
+      height: 100px;
+      display: block;
+      margin: 0 0 10px;
+    	background-size: 80px;      
+    }
+    .rain {
+      background-image: asset-url('rain.png');
+    }
+    .rain {
+      background-image: asset-url('clouds.png');
+    }    
+  }
+}
 
 .loader {
   position: relative;
