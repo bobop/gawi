@@ -13,8 +13,6 @@
 // = require jquery
 // = require jquery_ujs
 // = require turbolinks
+// = require chosen.jquery
+// = require custom
 // = require_tree
-  
-  
-= require chosen.jquery
-= require custom

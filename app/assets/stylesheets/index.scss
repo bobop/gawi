@@ -45,9 +45,19 @@
         padding: 20px;
         margin: 0;
         position: relative;
-      
+        
+        #search_admin_ward_id {
+          max-width: 200px;
+        }
+        
         .hide {
           display: none;
+        }
+        .sex-link{
+          color: #fbc014;
+          font-size: 18px;
+          font-weight: bold;
+          margin-left: 30px;
         }
         input {
           float: left;
