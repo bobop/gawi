@@ -14,29 +14,44 @@
 ActiveRecord::Schema.define(version: 20151025010547) do
 
   create_table "admin_wards", force: :cascade do |t|
-    t.string   "name",                  limit: 255
-    t.string   "lsoa_code",             limit: 255
-    t.string   "neighbourhood_code",    limit: 255
-    t.float    "lat",                   limit: 24
-    t.float    "lng",                   limit: 24
-    t.integer  "all_crime",             limit: 4,   default: 0
-    t.integer  "anti_social_behaviour", limit: 4,   default: 0
-    t.integer  "bicycle_theft",         limit: 4,   default: 0
-    t.integer  "burglary",              limit: 4,   default: 0
-    t.integer  "criminal_damage_arson", limit: 4,   default: 0
-    t.integer  "drugs",                 limit: 4,   default: 0
-    t.integer  "other_theft",           limit: 4,   default: 0
-    t.integer  "possession_of_weapons", limit: 4,   default: 0
-    t.integer  "public_order",          limit: 4,   default: 0
-    t.integer  "robbery",               limit: 4,   default: 0
-    t.integer  "shoplifting",           limit: 4,   default: 0
-    t.integer  "theft_from_the_person", limit: 4,   default: 0
-    t.integer  "vehicle_crime",         limit: 4,   default: 0
-    t.integer  "violent_crime",         limit: 4,   default: 0
-    t.integer  "other_crime",           limit: 4,   default: 0
-    t.datetime "created_at",                                    null: false
-    t.datetime "updated_at",                                    null: false
-    t.string   "url",                   limit: 255
+    t.string   "name",                           limit: 255
+    t.string   "lsoa_code",                      limit: 255
+    t.string   "neighbourhood_code",             limit: 255
+    t.float    "lat",                            limit: 24
+    t.float    "lng",                            limit: 24
+    t.integer  "all_crime",                      limit: 4,   default: 0
+    t.integer  "anti_social_behaviour",          limit: 4,   default: 0
+    t.integer  "bicycle_theft",                  limit: 4,   default: 0
+    t.integer  "burglary",                       limit: 4,   default: 0
+    t.integer  "criminal_damage_arson",          limit: 4,   default: 0
+    t.integer  "drugs",                          limit: 4,   default: 0
+    t.integer  "other_theft",                    limit: 4,   default: 0
+    t.integer  "possession_of_weapons",          limit: 4,   default: 0
+    t.integer  "public_order",                   limit: 4,   default: 0
+    t.integer  "robbery",                        limit: 4,   default: 0
+    t.integer  "shoplifting",                    limit: 4,   default: 0
+    t.integer  "theft_from_the_person",          limit: 4,   default: 0
+    t.integer  "vehicle_crime",                  limit: 4,   default: 0
+    t.integer  "violent_crime",                  limit: 4,   default: 0
+    t.integer  "other_crime",                    limit: 4,   default: 0
+    t.datetime "created_at",                                             null: false
+    t.datetime "updated_at",                                             null: false
+    t.string   "url",                            limit: 255
+    t.integer  "all_crime_resolved",             limit: 4,   default: 0
+    t.integer  "anti_social_behaviour_resolved", limit: 4,   default: 0
+    t.integer  "bicycle_theft_resolved",         limit: 4,   default: 0
+    t.integer  "burglary_resolved",              limit: 4,   default: 0
+    t.integer  "criminal_damage_arson_resolved", limit: 4,   default: 0
+    t.integer  "drugs_resolved",                 limit: 4,   default: 0
+    t.integer  "other_theft_resolved",           limit: 4,   default: 0
+    t.integer  "possession_of_weapons_resolved", limit: 4,   default: 0
+    t.integer  "public_order_resolved",          limit: 4,   default: 0
+    t.integer  "robbery_resolved",               limit: 4,   default: 0
+    t.integer  "shoplifting_resolved",           limit: 4,   default: 0
+    t.integer  "theft_from_the_person_resolved", limit: 4,   default: 0
+    t.integer  "vehicle_crime_resolved",         limit: 4,   default: 0
+    t.integer  "violent_crime_resolved",         limit: 4,   default: 0
+    t.integer  "other_crime_resolved",           limit: 4,   default: 0
   end
 
   add_index "admin_wards", ["lsoa_code"], name: "index_admin_wards_on_lsoa_code", using: :btree
@@ -74,8 +89,10 @@ ActiveRecord::Schema.define(version: 20151025010547) do
     t.text     "context",      limit: 65535
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "resolved",     limit: 1,     default: false
   end
 
+  add_index "missions", ["crime_type", "resolved"], name: "index_missions_on_crime_type_and_resolved", using: :btree
   add_index "missions", ["crime_type"], name: "index_missions_on_crime_type", using: :btree
 
   create_table "twitter_accounts", force: :cascade do |t|
