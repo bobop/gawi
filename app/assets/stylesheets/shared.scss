@@ -279,10 +279,10 @@ a#logo {
     background: $dark-blue;
     min-height: 245px;
     position: relative;
-    min-width: 570px;
+    // min-width: 570px;
     #fuzz {
       padding: 0 0 20px;
-      
+      display: flex;
       div {
         padding: 0!important;
       }
