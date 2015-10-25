@@ -48,14 +48,15 @@
               = @recommended.map{ |r| r[:name] }.to_sentence
         %li
           %p
-            %strong Ill advised:
-            %span
-              = @not_recommended.map{ |r| r[:name] }.to_sentence
-        %li
-          %p
             %strong Recommended crime for #{@neighbourhood['name']}:
             %span
               = @recommended_crime
+        %li
+          %p
+            %strong Ill advised:
+            %span
+              = @not_recommended.map{ |r| r[:name] }.to_sentence
+              
     
     
     .row
