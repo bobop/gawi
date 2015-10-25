@@ -12,7 +12,7 @@
       }
       #approx-loc-wrapper {
         text-align: center;
-        font-size: 1.4em;
+        font-size: 1.6em;
         color: #2f2f2f;
         margin: 0 0 40px;
       
@@ -34,11 +34,11 @@
       margin:0 auto 40px auto;
       box-shadow: 0 0 20px rgba(100,100,100,0.8);
       background-color: $yellow;
-    	background-image: url('search-bg.png');
+    	background-image: asset-url('search-bg.png');
     	background-size: 290px 185px;
       background-repeat: repeat-x;
     
-      form {
+      #form {
         border-radius: 80px;
         background: #2f2f2f;
         padding: 20px;
@@ -49,9 +49,7 @@
           max-width: 200px;
         }
         
-        .hide {
-          display: none;
-        }
+        
         .sex-link{
           color: #fbc014;
           font-size: 18px;
@@ -75,7 +73,7 @@
           background: #000;
           outline: none;
           border: none;
-        	background-image: url('search-icon.png');
+        	background-image: asset-url('search-icon.png');
         	background-size: 30px;
           background-repeat: no-repeat;
           background-position: center;
@@ -165,19 +163,19 @@
               border-bottom: none;
             }
             &:nth-of-type(1) a {
-          	  background-image: url('tv-icon.png');
+          	  background-image: asset-url('tv-icon.png');
               border-radius: 5px 0 0 0;              
             }
             &:nth-of-type(2) a {
-          	  background-image: url('smack-icon.png');
+          	  background-image: asset-url('smack-icon.png');
               border-radius: 0 5px 0 0;              
             }
             &:nth-of-type(3) a {
-          	  background-image: url('cash-icon.png');              
+          	  background-image: asset-url('cash-icon.png');              
               border-radius: 0 0 0 5px;              
             }
             &:nth-of-type(4) a {
-          	  background-image: url('car-icon.png');              
+          	  background-image: asset-url('car-icon.png');              
               border-radius: 0 0 5px 0;              
             }
             
@@ -207,4 +205,8 @@
       }
     }
   } 
+}
+
+.hide {
+  display: none;
 }
