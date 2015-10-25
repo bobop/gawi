@@ -65,7 +65,7 @@
                   = link_to @recommended_crime[0], info_path(crime: @recommended_crime[1], admin_ward: params[:admin_ward])
 
     .row
-      .col-md-6.col-sm-12.p0
+      .col-md-6.col-sm-12.p0{style: "display: flex; flex-flow: column;"}
         #weather-wrapper.tile
           %h3.tile-ttl 5 day forecast for #{@neighbourhood['name']}
           #weather
