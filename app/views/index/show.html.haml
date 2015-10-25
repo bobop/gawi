@@ -60,16 +60,9 @@
                 %strong Recommended crime for #{@admin_ward.name}:
                 .text-right
                   = link_to @recommended_crime[0], info_path(crime: @recommended_crime[1], admin_ward: params[:admin_ward])
-<<<<<<< HEAD
-
-  
-    
-      .col-sm-6.p0.clearfix
-=======
   
     .clearfix
       .col-sm-6.p0
->>>>>>> b356f33c7e4a298352c2ec367c74d3837e0a7442
         #weather-wrapper.tile
           %h3.tile-ttl 5 day forecast for #{@neighbourhood['name']}
           #weather
