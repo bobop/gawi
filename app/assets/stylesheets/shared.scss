@@ -49,6 +49,13 @@ a, a:hover, a:visited, a:active {
   	background-image: asset-url('logo.png');
   	background-size: 300px 120px;
   }
+
+a#logo {
+  width: 480px;
+  height: 190px;
+  display: block;
+	background-image: asset-url('logo.png');
+	background-size: 480px 190px;
 }
 #sub-header {
   background: $mid-blue;

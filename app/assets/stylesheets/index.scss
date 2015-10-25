@@ -13,7 +13,7 @@
       }
       #approx-loc-wrapper {
         text-align: center;
-        font-size: 1.4em;
+        font-size: 1.6em;
         color: #2f2f2f;
         margin: 0 0 40px;
         min-height: 20px;
@@ -30,6 +30,101 @@
       width: 100%;
       float: none;
       margin:0 auto 40px auto;
+<<<<<<< HEAD
+=======
+      box-shadow: 0 0 20px rgba(100,100,100,0.8);
+      background-color: $yellow;
+    	background-image: asset-url('search-bg.png');
+    	background-size: 290px 185px;
+      background-repeat: repeat-x;
+    
+      #form {
+        border-radius: 80px;
+        background: #2f2f2f;
+        padding: 20px;
+        margin: 0;
+        position: relative;
+        
+        #search_admin_ward_id {
+          max-width: 200px;
+        }
+        
+        
+        .sex-link{
+          color: #fbc014;
+          font-size: 18px;
+          font-weight: bold;
+          margin-left: 30px;
+        }
+        input {
+          float: left;
+        }
+        select {
+          min-height: 30px;
+          background: #fff;
+          width: 100%;
+        }
+        input[type="submit"] {
+          @extend .trans;
+          border-radius: 50%;
+          width: 60px;
+          height: 60px;
+          display: block;
+          background: #000;
+          outline: none;
+          border: none;
+        	background-image: asset-url('search-icon.png');
+        	background-size: 30px;
+          background-repeat: no-repeat;
+          background-position: center;
+          text-indent: -9999px;
+          background-color: $yellow;
+          position: absolute;
+          right: 20px;
+          top: 20px;
+          z-index: 0;
+          
+          &:hover {
+            background-color: $yellow-hover;
+          }
+        }
+        .chosen-container {
+          position: relative;
+          z-index: 0;
+          .chosen-single {
+            height: auto;
+            border: none;
+            border-radius: 30px;
+            box-shadow: 0 0 5px rgba(100,100,100,0.5);
+            z-index: 2;
+            span {
+              font-size: 2.0em;
+              font-weight: 300;
+              padding: 18px;
+            }
+          }
+          .chosen-drop {
+            padding: 50px 20px 20px 20px;
+            margin: -30px 0 0 0;
+            z-index: 1;
+            .chosen-results {
+              overflow-y: visible!important;
+              overflow-x: visible!important;
+              max-height: inherit;
+              
+              li.result-active {
+                color: #333!important;
+                
+                &:hover, &:focus {
+                  background-color: $yellow!important;
+                  color: #333;
+                }
+              }
+            }
+          }
+        }
+      }
+>>>>>>> 2c6e81c9dd9e09606f9cac94c7d2b0a92d3ce539
     }
     #inspiration {
       margin: 0 0 40px;
@@ -111,4 +206,8 @@
       }
     }
   } 
+}
+
+.hide {
+  display: none;
 }
