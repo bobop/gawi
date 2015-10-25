@@ -1,3 +1,13 @@
+=params[:crime]
+= number_to_percentage(@this_percentage, precision: 2)
+= stars_html(@score_band)
+%p
+  %strong Recommended:
+  = @recommended.map{ |r| r[:name] }.to_sentence
+%p
+  %strong Ill advised:
+  = @not_recommended.map{ |r| r[:name] }.to_sentence
+
 .container
   %h1 Crime: #{@crime}
   %h2 Neighbourhood: #{@neighbourhood['name']}
@@ -32,7 +42,7 @@
     %p=commy.blurb
     %hr
   %h2 Add a Comment
-  =form_for  :comment, url: index_index_path(crime: params[:crime], neighbourhood: params[:neighbourhood]) do |f|
+  =form_for  :comment, url: index_index_path(crime: params[:crime], neighbourhood: params[:neighbourhood], admin_ward: params[:admin_ward]) do |f|
     =f.text_area :blurb
     =f.submit "Comment"
 #gazeeb0

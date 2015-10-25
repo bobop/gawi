@@ -3,7 +3,8 @@ class SearchController < ApplicationController
   def index
     if params[:search].present?
       # location = params[:search][:location]
-      admin_ward_id = params[:search][:admin_ward_id]
+      # admin_ward_id = params[:search][:admin_ward_id]
+      admin_ward = AdminWard.find(params[:search][:admin_ward_id])
       category = params[:search][:category]
     end
 
@@ -11,7 +12,7 @@ class SearchController < ApplicationController
     # @location_response = fetch_location_data(lat_to_use, long_to_use)
     # @neighbourhood_response = fetch_neighbourhood_data(@location_response["force"], @location_response["neighbourhood"])
 
-    redirect_to info_path(crime: category, admin_ward: admin_ward_id)
+    redirect_to info_path(crime: category, admin_ward: admin_ward.url)
     
   end
 
