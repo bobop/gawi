@@ -92,6 +92,7 @@ ActiveRecord::Schema.define(version: 20151024235541) do
     t.boolean  "resolved",     limit: 1,     default: false
   end
 
+  add_index "missions", ["crime_type", "resolved"], name: "index_missions_on_crime_type_and_resolved", using: :btree
   add_index "missions", ["crime_type"], name: "index_missions_on_crime_type", using: :btree
 
   create_table "twitter_accounts", force: :cascade do |t|

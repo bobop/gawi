@@ -15,5 +15,7 @@ class AddResolvedColumnsToAdminWards < ActiveRecord::Migration
     add_column :admin_wards, :vehicle_crime_resolved, :integer, default: 0
     add_column :admin_wards, :violent_crime_resolved, :integer, default: 0
     add_column :admin_wards, :other_crime_resolved, :integer, default: 0
+
+    add_index :missions, [:crime_type, :resolved]
   end
 end
