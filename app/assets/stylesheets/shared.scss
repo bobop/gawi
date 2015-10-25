@@ -449,7 +449,7 @@ a#logo {
       
       
       p {
-        font-size: 1.4em;
+        font-size: 1.2em;
         font-weight: 300;
         color: $mid-blue;
         margin: 0 0 10px;
@@ -726,6 +726,36 @@ footer {
     a#logo {
       margin: 0 auto 30px auto!important;
       float: none!important;
+      
+      .loader {
+        position: absolute;
+        top: 3px!important;
+        right: 48px!important;
+        width: 25px!important;
+        height: 25px!important;
+        margin: 0;
+        &:before {
+          width: 25px!important;
+          height: 25px!important;
+        	background-size: 25px!important;
+          position: absolute;
+          top: 0;
+        }
+      }
+      .spinner {
+        width: 12px!important;
+        height: 12px!important;
+        position: absolute;
+        top: 8px;
+        left: 4px;
+        text-align: center;
+
+        -webkit-animation: sk-rotate 2.0s infinite linear;
+        animation: sk-rotate 2.0s infinite linear;
+
+      }
+      
+      
     }
     #search-wrapper {
       width: 100%!important;

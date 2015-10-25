@@ -18,13 +18,45 @@ img{
         width: 480px;
         height: 190px;
         float: none;
+        position: relative;
       	background-size: 480px 190px;
         background-repeat: no-repeat;
-        @media(max-width: 661px){
+        background-image: asset-url('logo-home.png');
+        @media(max-width: 991px){
           height: 150px;
           width: 350px;
           background-size: 350px 150px;
-        }    
+          
+        }
+        .loader {
+          position: absolute;
+          top: -5px;
+          right: 71px;
+          width: 30px;
+          height: 30px;
+          margin: 0;
+          &:before {
+            width: 35px;
+            height: 40px;
+          	background-size: 35px 40px;
+            position: absolute;
+            top: 0;
+          }
+        }
+        .spinner {
+          width: 20px;
+          height: 20px;
+          position: absolute;
+          top: 10px;
+          left: 8px;
+          text-align: center;
+  
+          -webkit-animation: sk-rotate 2.0s infinite linear;
+          animation: sk-rotate 2.0s infinite linear;
+  
+        }
+        
+          
       }
       #approx-loc-wrapper {
         text-align: center;
