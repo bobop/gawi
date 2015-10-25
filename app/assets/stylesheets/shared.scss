@@ -76,14 +76,24 @@ a#logo {
       span {
         font-size: 1.5em;
         color: $light-blue;
-        margin: 0 0 10px;
+        margin: 0 0;
         display: block;
+      }
+      p {
+        font-size: 1.5em;
+        color: $light-blue;
+        margin: 0 0;
+        display: inline; 
       }
       h3 {
         font-size: 3.5em;
         color: #fff;
         font-weight: 100;
         margin: 0;
+        small {
+          color: $light-blue;
+          font-size: 0.5em;
+        }
       }
     }
   }
@@ -109,13 +119,14 @@ a#logo {
       margin: 0 0 0 30px;     
     }
     p {
-      font-size: 2.0em;
+      font-size: 1.2em;
       color: $light-blue;
       margin: 0;
     }
     p.percent {
-      font-size: 1.4em;
-      margin: 0 0 5px;
+      font-size: 3em;
+      margin: 0 0;
+
     }
     span {
       color: $light-blue;
@@ -310,7 +321,8 @@ a#logo {
     z-index: 0;
     figure {
       position: relative;
-      min-height: 500px;
+      min-height: 360px;
+      margin: 0;
       .overlay {
         position: absolute;
         z-index: 2;
@@ -398,7 +410,7 @@ a#logo {
   }  
 }
 #twitter {
-  width: 50%;
+  // width: 50%;
   float: left;
   background: #1d1d1b;
   
@@ -417,6 +429,14 @@ a#logo {
     color: #fff;
   }
 }
+
+#events {
+  // width: 50%;
+  float: left;
+  background: #dce5ea;
+  
+}
+
 #twitter, #events {
   h3.tile-ttl {
     margin: 0 0 10px;
@@ -429,7 +449,7 @@ a#logo {
   }      
   
   p {
-    font-size: 2.5em;
+    font-size: 1.5em;
     font-weight: 100;
   }
 }
@@ -615,3 +635,12 @@ a#logo {
     -webkit-transform: scale(1.0);
   }
 }
+footer 
+  .row {
+    background: $mid-blue;
+    padding: 0 0;
+    p {
+      font-size: 1.5em;
+      color: $light-blue;
+    }
+  }

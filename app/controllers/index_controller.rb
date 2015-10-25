@@ -7,7 +7,8 @@ class IndexController < ApplicationController
 
   def show
     get_categories
-    @crime = @crime_categories.select{ |c| c[1] == params[:crime] }.first[0]
+    @crime_data = @crime_categories.select{ |c| c[1] == params[:crime] }.first
+    @crime = @crime_data[0]
     @admin_ward = AdminWard.find_by(url: params[:admin_ward])
     
     # NEIGHBOURHOOD
@@ -30,7 +31,7 @@ class IndexController < ApplicationController
     nw_array = []
     nearby_wards = AdminWard.near([@admin_ward.lat, @admin_ward.lng], 20).limit(6)
     nearby_wards.each do |nw|
-      nw_array << { name: nw.name, percentage: calculate_percentage(nw, params[:crime]) }
+      nw_array << { name: nw.name, percentage: calculate_percentage(nw, params[:crime]), url: nw.url }
     end
     # logger.info "--- nw_array = #{nw_array.inspect}"
     @recommended = nw_array.select{ |a| a[:percentage] < @this_percentage }
@@ -65,7 +66,7 @@ class IndexController < ApplicationController
       @resolved_crimes = aw[crime_slug+'_resolved']
       @all_crimes = aw[crime_slug]
 
-      return (@resolved_crimes.to_f/@all_crimes.to_f ) * 100.0
+      return 100 - ((@resolved_crimes.to_f/@all_crimes.to_f ) * 100.0)
     end
 
     def score_band(perc)
@@ -73,18 +74,18 @@ class IndexController < ApplicationController
     end
 
     def calculate_recommended_crime
-      current_best = @crime
+      current_best = @crime_data
       current_best_score = @this_percentage
-      @crime_categories.each do |crime|
+      (@crime_categories - current_best).each do |crime|
         unless crime[1] == "anti-social-behaviour"
           temp = calculate_percentage(@admin_ward, crime[1])
-          if temp < current_best_score
+          if temp > current_best_score
             current_best_score = temp
             current_best = crime
           end
         end
       end
-      @recommended_crime = current_best[0]
+      @recommended_crime = current_best
     end
 
 end

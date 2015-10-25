@@ -1,5 +1,6 @@
 - if @weather.present?
-  - @weather.each do |day|
+  - @weather.each_with_index do |day, i|
     .weather-box
+      .weather_day= Time.now.advance(days: i).strftime('%a')
       .weather-icon{class: "#{day.weather.first.main.downcase}"}
       .weather-text= day.weather.first.description
