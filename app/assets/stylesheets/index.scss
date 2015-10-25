@@ -42,6 +42,7 @@
         padding: 20px;
         margin: 0;
         position: relative;
+        width: 100%!important;
         
         #search_admin_ward_id {
           max-width: 200px;
@@ -89,6 +90,7 @@
         .chosen-container {
           position: relative;
           z-index: 0;
+          width: 100%!important;
           .chosen-single {
             height: auto;
             border: none;
@@ -198,7 +200,8 @@
               }
             }
           }
-        }      
+        }
+      
       }
     }
   } 

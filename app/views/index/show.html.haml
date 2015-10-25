@@ -37,15 +37,15 @@
           
             
   #content
-    .clearfix
-      .col-sm-8.p0
+    .row
+      .col-md-8.col-sm-12.p0
         #wiki-info
           %figure
             = image_tag "#{@neighbourhood['id']}.jpg"
             .overlay
               #place
               
-      .col-sm-4.p0
+      .col-md-4.col-sm-12.p0
         #recommended
           %ul
             %li
@@ -64,20 +64,20 @@
                 .text-right
                   = link_to @recommended_crime[0], info_path(crime: @recommended_crime[1], admin_ward: params[:admin_ward])
 
-      .col-sm-6.p0.clearfix
-    .clearfix
-      .col-sm-6.p0
+    .row
+      .col-md-6.col-sm-12.p0
         #weather-wrapper.tile
           %h3.tile-ttl 5 day forecast for #{@neighbourhood['name']}
           #weather
-        #localfuzz
-          #fuzz-ttl
-            %h3 LOCAL FUZZ
-          #fuzz
-       
-          
-          
-      .col-sm-3#twitter
+        #localfuzz.p0
+          .tile
+            %h3.tile-ttl
+              LOCAL FUZZ
+          #fuzz.clearfix
+     
+        
+        
+      .col-md-3.col-sm-12#twitter.p0
         #twitter.tile
           %h3.tile-ttl
             %i.fa.fa-twitter
@@ -87,7 +87,7 @@
             !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
           / %span.date 25.10.15 04:43
           / %p Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet      
-      .col-sm-3#events
+      .col-md-3.col-sm-12#events.p0
         #events.tile
           %h3.tile-ttl Local Fuzz Events
           #marketdays
@@ -168,5 +168,23 @@
         $("#place").html(data);
       })
     };
+
+  });
+  
+:javascript
+  $( ".show-me-link" ).click(function() {
+    $( ".monkey" ).removeClass("hide");
+    $( ".show-me-link" ).addClass("hide");
+    $( ".hide-me-link" ).removeClass("hide");
+  });
+  $( ".hide-me-link" ).click(function() {
+    $( ".monkey" ).addClass("hide");
+    $( ".show-me-link" ).removeClass("hide");
+    $( ".hide-me-link" ).addClass("hide");
+  });
+  
+  $( "#search_admin_ward_id").change(function(){
+    $( "#approx-loc").addClass("hide");
+    $( ".hide-me-link" ).addClass("hide");
 
   });
