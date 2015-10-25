@@ -92,7 +92,10 @@
     #comments
       %h2 Comments
       -@comments.each do |commy|
-        %p=commy.blurb
+        %p
+          =commy.blurb
+          ="-"
+          =commy.created_at.strftime("%d/%b/%Y - %H:%M")
         %hr
       %h3 Add a Comment
       =form_for  :comment, url: index_index_path(crime: params[:crime], neighbourhood: params[:neighbourhood], admin_ward: params[:admin_ward]) do |f|
