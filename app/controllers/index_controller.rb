@@ -28,6 +28,8 @@ class IndexController < ApplicationController
     @crew = Crew.all.sample(4)
     @local_bacon = JSON.parse(HTTParty.get("https://data.police.uk/api/greater-manchester/#{@admin_ward.neighbourhood_code}/people").body)
     @comments = Comment.where(crime: params[:crime], admin_ward_id: @admin_ward.id)
+
+    calculate_percentage
   end
   
   def create
@@ -45,5 +47,16 @@ class IndexController < ApplicationController
     end
     redirect_to info_path(admin_ward: params[:admin_ward], crime: params[:crime], neighbourhood: params[:neighbourhood], anchor: "gazeeb0")
   end
+
+  protected
+    def calculate_percentage
+      crime_slug = params[:crime].gsub("-", "_")
+      @max = AdminWard.maximum(crime_slug)
+      @min = AdminWard.minimum(crime_slug)
+      @current = @admin_ward.send(crime_slug)
+
+      @percentage_score = ((@current.to_f - @min.to_f)/(@max.to_f - @min.to_f)) * 100.0
+      @score_band = @percentage_score.round(-1) / 10
+    end
 
 end
