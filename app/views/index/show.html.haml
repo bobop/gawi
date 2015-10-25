@@ -12,7 +12,7 @@
     #gawiscore
       %span#scorelogo
       %p score
-      %p= number_to_percentage(@this_percentage, precision: 2)
+      %p.percent= number_to_percentage(@this_percentage, precision: 2)
       #stars= stars_html(@score_band)
     %ul#stats
       %li
@@ -39,14 +39,39 @@
           %h3 LOCAL FUZZ
         #fuzz
     
+    #recommended
+      %ul
+        %li
+          %p
+            %strong Recommended for #{@crime}:
+            %span
+              = @recommended.map{ |r| r[:name] }.to_sentence
+        %li
+          %p
+            %strong Ill advised:
+            %span
+              = @not_recommended.map{ |r| r[:name] }.to_sentence
+        %li
+          %p
+            %strong Recommended crime for #{@neighbourhood['name']}:
+            %span
+              = @recommended_crime
+    
+    
     .row
       .col-sm-6
         #weather-wrapper.tile
           %h3.tile-ttl 5 day forecast for #{@neighbourhood['name']}
           #weather
-        #weather-wrapper.tile
-          %h3.tile-ttl 5 day forecast for #{@neighbourhood['name']}
-          #weather
+        #comments
+          %h2 Comments
+          -@comments.each do |commy|
+            %p=commy.blurb
+            %hr
+          %h3 Add a Comment
+          =form_for  :comment, url: index_index_path(crime: params[:crime], neighbourhood: params[:neighbourhood], admin_ward: params[:admin_ward]) do |f|
+            =f.text_area :blurb
+            =f.submit "Comment"
           
           
       .col-sm-6  
@@ -70,20 +95,6 @@
         
           
       
-    #recommended
-      %ul
-        %li
-          %p
-            %strong Recommended:
-            = @recommended.map{ |r| r[:name] }.to_sentence
-        %li
-          %p
-            %strong Ill advised:
-            = @not_recommended.map{ |r| r[:name] }.to_sentence
-        %li
-          %p
-            %strong Recommended Crime:
-            = @recommended_crime
 
 
     / %h1 Suggested Crew
@@ -103,15 +114,6 @@
     /   %p
     /     = mail_to "m.ryder@volcanic.co.uk", subject: "Help my do some crime init?" do
     /       %strong Contact
-    #comments
-      %h2 Comments
-      -@comments.each do |commy|
-        %p=commy.blurb
-        %hr
-      %h3 Add a Comment
-      =form_for  :comment, url: index_index_path(crime: params[:crime], neighbourhood: params[:neighbourhood], admin_ward: params[:admin_ward]) do |f|
-        =f.text_area :blurb
-        =f.submit "Comment"
   #gazeeb0
 
 
