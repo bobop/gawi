@@ -1,4 +1,6 @@
 =params[:crime]
+= @score_band
+= stars_html(@score_band)
 .container
   %h1 Crime: #{@crime}
   %h2 Neighbourhood: #{@neighbourhood['name']}
