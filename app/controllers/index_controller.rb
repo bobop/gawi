@@ -66,7 +66,7 @@ class IndexController < ApplicationController
       @resolved_crimes = aw[crime_slug+'_resolved']
       @all_crimes = aw[crime_slug]
 
-      return (@resolved_crimes.to_f/@all_crimes.to_f ) * 100.0
+      return 100 - ((@resolved_crimes.to_f/@all_crimes.to_f ) * 100.0)
     end
 
     def score_band(perc)
@@ -79,7 +79,7 @@ class IndexController < ApplicationController
       (@crime_categories - current_best).each do |crime|
         unless crime[1] == "anti-social-behaviour"
           temp = calculate_percentage(@admin_ward, crime[1])
-          if temp < current_best_score
+          if temp > current_best_score
             current_best_score = temp
             current_best = crime
           end

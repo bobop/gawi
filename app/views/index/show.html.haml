@@ -17,7 +17,6 @@
   #sub-header.clearfix
     #gawiscore
       %span#scorelogo
-      %p score
       %p.percent= number_to_percentage(@this_percentage, precision: 2)
       #stars= stars_html(@score_band)
     %ul#stats
@@ -29,7 +28,7 @@
         %span Location
         %h3 
           = @admin_ward.name
-        %p within #{@neighbourhood['name']}
+          %small within #{@neighbourhood['name']}
             
 
     
@@ -37,31 +36,67 @@
     .col-sm-8.p0
       #wiki-info
         %figure
-          = image_tag "#{@neighbourhood['id']}.jpg"
+          =image_tag "#{@neighbourhood['id']}"
           .overlay
             #place
             
     .col-sm-4.p0
-      #recommended
-        %ul
-          %li
-            %p
-              %strong Better areas for #{@crime}:
-              .text-right
-                = @recommended.map{ |r| link_to(r[:name], info_path(crime: params[:crime], admin_ward: r[:url])) }.to_sentence.html_safe
-          %li
-            %p
-              %strong Worse areas for #{@crime}:
-              .text-right
-                = @not_recommended.map{ |r| link_to(r[:name], info_path(crime: params[:crime], admin_ward: r[:url])) }.to_sentence.html_safe
-          %li
-            %p
-              %strong Recommended crime for #{@admin_ward.name}:
-              .text-right
-                = link_to @recommended_crime[0], info_path(crime: @recommended_crime[1], admin_ward: params[:admin_ward])
-        
+      #localfuzz
+        #fuzz-ttl
+          %h3 LOCAL FUZZ
+        #fuzz
+    
+    #recommended
+      %ul
+        %li
+          %p
+            %strong Recommended for #{@crime}:
+            %span
+              = @recommended.map{ |r| r[:name] }.to_sentence
+        %li
+          %p
+            %strong Recommended crime for #{@neighbourhood['name']}:
+            %span
+              = @recommended_crime
+        %li
+          %p
+            %strong Ill advised:
+            %span
+              = @not_recommended.map{ |r| r[:name] }.to_sentence
+              
+    
+    
     .row
       .col-sm-6
+    .clearfix
+      .col-sm-8.p0
+        #wiki-info
+          %figure
+            = image_tag "#{@neighbourhood['id']}.jpg"
+            .overlay
+              #place
+              
+      .col-sm-4.p0
+        #recommended
+          %ul
+            %li
+              %p
+                %strong Better areas for #{@crime}:
+                .text-right
+                  = @recommended.map{ |r| link_to(r[:name], info_path(crime: params[:crime], admin_ward: r[:url])) }.to_sentence.html_safe
+            %li
+              %p
+                %strong Worse areas for #{@crime}:
+                .text-right
+                  = @not_recommended.map{ |r| link_to(r[:name], info_path(crime: params[:crime], admin_ward: r[:url])) }.to_sentence.html_safe
+            %li
+              %p
+                %strong Recommended crime for #{@admin_ward.name}:
+                .text-right
+                  = link_to @recommended_crime[0], info_path(crime: @recommended_crime[1], admin_ward: params[:admin_ward])
+          
+      -# .row
+      .col-sm-6.p0
         #weather-wrapper.tile
           %h3.tile-ttl 5 day forecast for #{@neighbourhood['name']}
           #weather
@@ -72,7 +107,7 @@
        
           
           
-      .col-sm-3 
+      .col-sm-3#twitter
         #twitter.tile
           %h3.tile-ttl
             %i.fa.fa-twitter
@@ -82,7 +117,7 @@
             !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
           / %span.date 25.10.15 04:43
           / %p Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet      
-      .col-sm-3 
+      .col-sm-3#events
         #events.tile
           %h3.tile-ttl Local Fuzz Events
           #marketdays
