@@ -185,8 +185,10 @@ a#logo {
     position: relative;
     
     #search_admin_ward_id {
-      max-width: 200px;
+      max-width: 80%;
       margin: 0 auto;
+      font-size: 1.4em;
+      height: 30px;
     }
     
     .hide {
@@ -205,7 +207,7 @@ a#logo {
         display: none;
       }
       select {
-        width: 50%;
+        // width: 50%;
         margin: 0 auto;
         padding: 5px 0;
       }

@@ -10,9 +10,9 @@
         %p
           =link_to "Select Another Location", "#", class: "sex-link show-me-link"
           =link_to "Hide Select", "#", class: "sex-link hide-me-link hide"
-        .monkey.hide
+        .monkey.hide.text-center
           %label.label Location
-          = f.select :admin_ward_id, options_for_select(AdminWard.all.order(:name).map{ |c| [c['name'], c['id']] }), class: "select-me", prompt: "Please select"
+          = f.select :admin_ward_id, options_for_select(AdminWard.all.order(:name).map{ |c| [c['name'], c['id']] }), {}, class: "select-me", prompt: "Please select"
         
   #sub-header.clearfix
     #gawiscore
